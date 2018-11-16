@@ -12,7 +12,7 @@ const NavItem = styled.div`
   && {
     a {
       position: relative;
-      color: #000;
+      color: ${linkColor};
       text-decoration: none;
     }
   
