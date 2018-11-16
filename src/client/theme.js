@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export const backgroundColor = '#edebe9';
 export const brandPrimary = '#25408f';
 export const accent1Color = '#ECF0F1';
-export const linkColor = '#333';
+export const linkColor = '#fff';
 
 export const xsMaxSize = '768px';
 export const mdMinSize = '769px';
