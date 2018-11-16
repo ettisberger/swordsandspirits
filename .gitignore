@@ -3,3 +3,5 @@
 node_modules
 dist
 src/config/secret.config.json
+yarn.lock
+package-lock.json
