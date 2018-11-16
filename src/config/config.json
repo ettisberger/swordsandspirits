@@ -2,5 +2,9 @@
   "AUTH": {
     "CLIENT_ID": "'UeQb2EZg64CG9Kma8qkOKBeTHgINEhQk'",
     "REDIRECT_URL": "'https://swordsandspirits.herokuapp.com/'"
+  },
+  "GMAIL": {
+    "USER": "test@gmail.com",
+    "PW": "testpw"
   }
 }

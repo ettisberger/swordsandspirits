@@ -2,6 +2,13 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const nodeMailer = require('nodemailer');
+const fs = require('fs');
+
+let config = require('../config/secret.config.json');
+
+if(!config){
+    config = require('../config/local.config.json');
+}
 
 const app = express();
 app.use(bodyParser.json());
@@ -17,21 +24,21 @@ app.get('*', (req, res) => {
 });
 
 app.post('/send-email', function (req, res) {
+    console.log(config.GMAIL);
+
     let transporter = nodeMailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
+        service: 'gmail',
         auth: {
-            user: 'xxx@xx.com',
-            pass: 'xxxx'
+            user: config.GMAIL.USER,
+            pass: config.GMAIL.PW
         }
     });
     let mailOptions = {
-        from: '"Krunal Lathiya" <xx@gmail.com>', // sender address
+        from: '"Highland Dancing Basel" <info@swordsandspirits.ch>', // sender address
         to: req.body.to, // list of receivers
         subject: req.body.subject, // Subject line
         text: req.body.body, // plain text body
-        html: '<b>NodeJS Email Tutorial</b>' // html body
+        html: '<b>Test Email</b>' // html body
     };
 
     transporter.sendMail(mailOptions, (error, info) => {

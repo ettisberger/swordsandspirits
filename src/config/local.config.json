@@ -2,5 +2,9 @@
     "AUTH": {
         "CLIENT_ID": "'UeQb2EZg64CG9Kma8qkOKBeTHgINEhQk'",
         "REDIRECT_URL": "'http://localhost:8080'"
-}
+    },
+    "GMAIL": {
+        "USER": "test@gmail.com",
+        "PW": "testpw"
+    }
 }

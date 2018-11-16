@@ -4,6 +4,6 @@ const commonConfig = require('./webpack.common.config');
 
 module.exports = merge(commonConfig, {
     plugins: [
-        new webpack.DefinePlugin(Object.assign(require('./config/local.config.json')))
+        new webpack.DefinePlugin(Object.assign(require('./src/config/local.config.json')))
     ],
 });
