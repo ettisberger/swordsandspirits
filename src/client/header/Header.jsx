@@ -3,18 +3,23 @@ import NavigationBar from '../navigation/NavigationBar.jsx';
 import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components';
 import {accent1Color, brandPrimary} from '../theme';
-import logo from '../../client/assets/images/logo_white.png';
+import logo from '../../client/assets/images/logo_header.png';
 import theme from './../theme';
 
 const HeaderWrapper = styled.div`
-    border-bottom: 10px solid ${brandPrimary};
     background-color: ${brandPrimary};
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 30px;
+    z-index: 9999;
 `;
 
 const Logo = styled.img`
-    max-width: 50%; 
-    height: auto;
-    padding: 1rem;
+    max-width: 100%; 
+    height: 70px;
+    float: left;
     
   ${theme.breakpoints.down('sm')}{
     max-width: 100%; 
@@ -40,18 +45,26 @@ const HeaderTitle = styled.div`
   }
 `;
 
+const NavItem = styled.div`
+  color: ${accent1Color};
+  font-size: 18px;
+  text-align: right;
+`
+
 export default class Header extends Component {
     // <Logo src={logo} />
     render() {
         return (
             <header>
                 <HeaderWrapper>
-                    <Grid container alignItems="center" spacing={24}>
-                        <Grid item xs={3}>
-                            <Logo src={logo}></Logo>
+                    <Grid container spacing={12}>
+                        <Grid item xs={4}>
+                            <Logo src={logo}/>
                         </Grid>
-                        <Grid item xs={9}>
-                            <HeaderTitle>SWORDS AND SPIRITS</HeaderTitle>
+                        <Grid container item xs={8} justify={'flex-end'} alignItems={'center'}>
+                                <Grid item xs={3}><NavItem>HOME</NavItem></Grid>
+                                <Grid item xs={3}><NavItem>TICKETS</NavItem></Grid>
+                                <Grid item xs={3}><NavItem>KONTAKT</NavItem></Grid>
                         </Grid>
                     </Grid>
                 </HeaderWrapper>

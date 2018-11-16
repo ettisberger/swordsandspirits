@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles'; // v1.x
 import styled from 'styled-components'
 
-export const backgroundColor = '#ECF0F1';
+export const backgroundColor = '#edebe9';
 export const brandPrimary = '#25408f';
 export const accent1Color = '#ECF0F1';
 export const linkColor = '#333';
