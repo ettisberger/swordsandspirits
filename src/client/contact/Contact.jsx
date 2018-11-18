@@ -18,9 +18,8 @@ class Contact extends Component {
                             <Grid container spacing={24} justify={'center'}>
                                 <Grid container item xs={6} justify={'center'}>
                                     <TextField
-                                        id="outlined-uncontrolled"
+                                        id="firstName"
                                         label="Vorname"
-                                        defaultValue="Vorname"
                                         margin="normal"
                                         variant="outlined"
                                         fullWidth={true}
@@ -28,9 +27,8 @@ class Contact extends Component {
                                 </Grid>
                                 <Grid container item xs={6} justify={'center'}>
                                     <TextField
-                                        id="outlined-uncontrolled"
+                                        id="name"
                                         label="Name"
-                                        defaultValue="Name"
                                         margin="normal"
                                         variant="outlined"
                                         fullWidth={true}
@@ -38,9 +36,8 @@ class Contact extends Component {
                                 </Grid>
                                 <Grid container item xs={6} justify={'center'}>
                                     <TextField
-                                        id="outlined-uncontrolled"
+                                        id="street"
                                         label="Strasse"
-                                        defaultValue="Strasse"
                                         margin="normal"
                                         variant="outlined"
                                         fullWidth={true}
@@ -48,9 +45,8 @@ class Contact extends Component {
                                 </Grid>
                                 <Grid container item xs={6} justify={'center'}>
                                     <TextField
-                                        id="outlined-uncontrolled"
+                                        id="street-nr"
                                         label="Nr."
-                                        defaultValue="Nr."
                                         margin="normal"
                                         variant="outlined"
                                         fullWidth={true}
@@ -58,9 +54,18 @@ class Contact extends Component {
                                 </Grid>
                                 <Grid container item xs={12} justify={'center'}>
                                     <TextField
-                                        id="outlined-uncontrolled"
+                                        id="email"
+                                        label="Email"
+                                        autoComplete="email"
+                                        margin="normal"
+                                        variant="outlined"
+                                        fullWidth={true}
+                                    />
+                                </Grid>
+                                <Grid container item xs={12} justify={'center'}>
+                                    <TextField
+                                        id="phone"
                                         label="Telefon/Handy"
-                                        defaultValue="Telefon/Handy"
                                         margin="normal"
                                         variant="outlined"
                                         fullWidth={true}
@@ -68,9 +73,8 @@ class Contact extends Component {
                                 </Grid>
                                 <Grid container item xs={12} justify={'center'}>
                                     <TextField
-                                        id="outlined-uncontrolled"
+                                        id="message"
                                         label="Nachricht"
-                                        defaultValue=""
                                         margin="normal"
                                         variant="outlined"
                                         multiline
