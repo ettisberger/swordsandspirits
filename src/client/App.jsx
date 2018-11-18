@@ -2,7 +2,7 @@
     ./client/App.jsx
 */
 import React from 'react';
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import Header from './header/Header.jsx';
 import Footer from './footer/Footer.jsx';
 import Home from './home/Home.jsx';

@@ -54,7 +54,7 @@ class NavigationBar extends Component {
                         <NavItem><Link to={'tickets'}>TICKETS</Link></NavItem>
                     </Grid>
                     <Grid item xs={3}>
-                        <NavItem><Link to={'contact'}>CONTACT</Link></NavItem>
+                        <NavItem><Link to={'contact'}>KONTAKT</Link></NavItem>
                     </Grid>
                 </Grid>
         )

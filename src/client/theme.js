@@ -36,6 +36,11 @@ export const Section = styled.section`
     `}
 `;
 
+export const SectionTitle = styled.h2 `
+  text-align: center;
+  color: ${brandPrimary};
+`;
+
 export default createMuiTheme({
     palette: {
         primary: {
