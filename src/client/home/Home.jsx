@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import { Inlay } from '../theme';
 import Button from '@material-ui/core/Button';
-import flyer from '../assets/images/flyer.png'
+import Grid from '@material-ui/core/Grid'
+import {Section} from '../theme';
+import flyer from '../assets/images/flyer.png';
+import partner from '../assets/images/partner_placeholder.png';
 
 const StyledButton = styled(Button)`
     && {
@@ -14,15 +17,63 @@ const Flyer = styled.img`
   display: block;
   max-width: 100%;
   height: auto;
-  margin: 200px auto;
+  margin: 0 auto;
 `
+
+const Partner = styled.img`
+  display: block;
+  max-width: 100%;
+  height: 150px;
+`;
+
+const Title = styled.h2`
+  text-align: center;
+`;
 
 export default class Home extends Component {
     render() {
         return (
-            <Inlay>
-                <Flyer src={flyer}/>
-            </Inlay>
+            <React.Fragment>
+                <Section odd>
+                    <Inlay>
+                        <Flyer src={flyer}/>
+                    </Inlay>
+                </Section>
+                <Section even>
+                    <Title>Partner</Title>
+                    <Grid container spacing={12} justify={'center'}>
+                        <Grid container item xs={3} justify={'center'}>
+                            <Partner src={partner}/>
+                        </Grid>
+                        <Grid container item xs={3} justify={'center'}>
+                            <Partner src={partner}/>
+                        </Grid>
+                        <Grid container item xs={3} justify={'center'}>
+                            <Partner src={partner}/>
+                        </Grid>
+                        <Grid container item xs={3} justify={'center'}>
+                            <Partner src={partner}/>
+                        </Grid>
+                    </Grid>
+                </Section>
+                <Section odd>
+                    <Title>Sponsoren</Title>
+                    <Grid container spacing={12} justify={'center'}>
+                        <Grid container item xs={3} justify={'center'}>
+                            <Partner src={partner}/>
+                        </Grid>
+                        <Grid container item xs={3} justify={'center'}>
+                            <Partner src={partner}/>
+                        </Grid>
+                        <Grid container item xs={3} justify={'center'}>
+                            <Partner src={partner}/>
+                        </Grid>
+                        <Grid container item xs={3} justify={'center'}>
+                            <Partner src={partner}/>
+                        </Grid>
+                    </Grid>
+                </Section>
+            </React.Fragment>
         )
     }
 }
