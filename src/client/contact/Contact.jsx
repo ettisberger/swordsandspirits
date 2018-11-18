@@ -39,7 +39,7 @@ class Contact extends Component {
                 <Section>
                     <Inlay>
                         <SectionTitle>Kontakt</SectionTitle>
-                        <form onSubmit={(e) => this.submit(e)} noValidate autoComplete="on">
+                        <form noValidate autoComplete="on">
                             <Grid container spacing={24} justify={'center'}>
                                 <Grid container item xs={6} justify={'center'}>
                                     <TextField
@@ -126,7 +126,7 @@ class Contact extends Component {
                                     />
                                 </Grid>
                                 <Grid container item xs={12} justify={'center'}>
-                                    <Button variant="outlined" color="primary" type="submit">
+                                    <Button variant="outlined" color="primary" onClick={(e) => this.submit(e)} >
                                         SENDEN
                                     </Button>
                                 </Grid>

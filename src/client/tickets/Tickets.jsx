@@ -3,6 +3,14 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import {Section, SectionTitle, Inlay} from '../theme';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 class Tickets extends Component {
 
@@ -15,10 +23,11 @@ class Tickets extends Component {
             streetNr: '',
             email: '',
             phone: '',
+            date: '',
             ticketsAdults: 0,
             ticketsKids: 0,
-            print: '',
-            payment: '',
+            print: 'printAthome',
+            payment: 'prepayment',
             message: ''
         }
     };
@@ -42,7 +51,7 @@ class Tickets extends Component {
                 <Section>
                     <Inlay>
                         <SectionTitle>Tickets</SectionTitle>
-                        <form onSubmit={(e) => this.submit(e)} noValidate autoComplete="on">
+                        <form noValidate autoComplete="on">
                             <Grid container spacing={24} justify={'center'}>
                                 <Grid container item xs={6} justify={'center'}>
                                     <TextField
@@ -114,6 +123,34 @@ class Tickets extends Component {
                                         fullWidth={true}
                                     />
                                 </Grid>
+                                <Grid container item xs={12} justify={'center'}>
+                                    <FormControl variant="outlined" fullWidth={true} required>
+                                        <InputLabel
+                                            ref={ref => {
+                                                this.InputLabelRef = ref;
+                                            }}
+                                            htmlFor="date"
+                                        >
+                                            Vorstellung
+                                        </InputLabel>
+                                        <Select
+                                            native
+                                            value={this.state.date}
+                                            onChange={this.handleChange('date')}
+                                            input={
+                                                <OutlinedInput
+                                                    name="date"
+                                                    labelWidth={this.state.labelWidth}
+                                                    id="date"
+                                                />
+                                            }
+                                        >
+                                            <option value={''}>Bitte Vorstellung wählen</option>
+                                            <option value={'saturday'}>Samstag, 10.Mai 2019 / 19.30 Uhr</option>
+                                            <option value={'sunday'}>Sonntag, 11.Mai 2019 / 14.00 Uhr</option>
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
                                 <Grid container item xs={6} justify={'center'}>
                                     <TextField
                                         id="ticketsAdults"
@@ -121,6 +158,7 @@ class Tickets extends Component {
                                         value={this.state.ticketsAdults}
                                         onChange={this.handleChange('ticketsAdults')}
                                         type="number"
+                                        variant="outlined"
                                         fullWidth={true}
                                         InputLabelProps={{
                                             shrink: true,
@@ -135,6 +173,7 @@ class Tickets extends Component {
                                         value={this.state.ticketsAdults}
                                         onChange={this.handleChange('ticketsAdults')}
                                         type="number"
+                                        variant="outlined"
                                         fullWidth={true}
                                         InputLabelProps={{
                                             shrink: true,
@@ -142,6 +181,35 @@ class Tickets extends Component {
                                         margin="normal"
                                     />
                                 </Grid>
+                                <Grid container item xs={6} justify={'center'}>
+                                    <FormControl component="fieldset" fullWidth={true} >
+                                        <FormLabel component="legend">Versand</FormLabel>
+                                        <RadioGroup
+                                            aria-label="print"
+                                            name="print"
+                                            value={this.state.print}
+                                            onChange={this.handleChange('print')}
+                                        >
+                                            <FormControlLabel value="printAthome" control={<Radio color="primary"/>} label="Print@Home" />
+                                            <FormControlLabel value="ship" control={<Radio color="primary"/>} label="Versand (+5Fr)" />
+                                        </RadioGroup>
+                                    </FormControl>
+                                </Grid>
+                                <Grid container item xs={6} justify={'center'}>
+                                    <FormControl component="fieldset" fullWidth={true} >
+                                        <FormLabel component="legend">Bezahlung</FormLabel>
+                                        <RadioGroup
+                                            aria-label="payment"
+                                            name="payment"
+                                            value={this.state.payment}
+                                            onChange={this.handleChange('payment')}
+                                        >
+                                            <FormControlLabel value="prepayment" control={<Radio color="primary"/>} label="Vorauskasse" />
+                                            <FormControlLabel value="bill" control={<Radio color="primary"/>} label="Rechnung" />
+                                        </RadioGroup>
+                                    </FormControl>
+                                </Grid>
+
                                 <Grid container item xs={12} justify={'center'}>
                                     <TextField
                                         id="message"
@@ -150,14 +218,13 @@ class Tickets extends Component {
                                         onChange={this.handleChange('message')}
                                         margin="normal"
                                         variant="outlined"
-                                        required
                                         multiline
                                         rows="10"
                                         fullWidth={true}
                                     />
                                 </Grid>
                                 <Grid container item xs={12} justify={'center'}>
-                                    <Button variant="outlined" color="primary" type="submit">
+                                    <Button variant="outlined" color="primary" onClick={(event) => this.submit(event)}>
                                         BESTELLEN
                                     </Button>
                                 </Grid>
