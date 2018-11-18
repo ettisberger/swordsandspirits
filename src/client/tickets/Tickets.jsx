@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import {Section, SectionTitle, Inlay} from '../theme';
 
-class Contact extends Component {
+class Tickets extends Component {
 
     constructor (props) {
         super(props);
@@ -16,6 +15,10 @@ class Contact extends Component {
             streetNr: '',
             email: '',
             phone: '',
+            ticketsAdults: 0,
+            ticketsKids: 0,
+            print: '',
+            payment: '',
             message: ''
         }
     };
@@ -38,7 +41,7 @@ class Contact extends Component {
             <React.Fragment>
                 <Section>
                     <Inlay>
-                        <SectionTitle>Kontakt</SectionTitle>
+                        <SectionTitle>Tickets</SectionTitle>
                         <form onSubmit={(e) => this.submit(e)} noValidate autoComplete="on">
                             <Grid container spacing={24} justify={'center'}>
                                 <Grid container item xs={6} justify={'center'}>
@@ -111,6 +114,34 @@ class Contact extends Component {
                                         fullWidth={true}
                                     />
                                 </Grid>
+                                <Grid container item xs={6} justify={'center'}>
+                                    <TextField
+                                        id="ticketsAdults"
+                                        label="Anzahl Tickets (Erwachsene, je 32.-)"
+                                        value={this.state.ticketsAdults}
+                                        onChange={this.handleChange('ticketsAdults')}
+                                        type="number"
+                                        fullWidth={true}
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        margin="normal"
+                                    />
+                                </Grid>
+                                <Grid container item xs={6} justify={'center'}>
+                                    <TextField
+                                        id="ticketsAdults"
+                                        label="Anzahl Tickets (Erwachsene, je 32.-)"
+                                        value={this.state.ticketsAdults}
+                                        onChange={this.handleChange('ticketsAdults')}
+                                        type="number"
+                                        fullWidth={true}
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        margin="normal"
+                                    />
+                                </Grid>
                                 <Grid container item xs={12} justify={'center'}>
                                     <TextField
                                         id="message"
@@ -127,7 +158,7 @@ class Contact extends Component {
                                 </Grid>
                                 <Grid container item xs={12} justify={'center'}>
                                     <Button variant="outlined" color="primary" type="submit">
-                                        SENDEN
+                                        BESTELLEN
                                     </Button>
                                 </Grid>
                             </Grid>
@@ -139,4 +170,4 @@ class Contact extends Component {
     }
 }
 
-export default Contact;
+export default Tickets;
