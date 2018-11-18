@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import {Section, SectionTitle, Inlay} from '../theme';
+import {Inlay, Section, SectionTitle} from '../theme';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -23,15 +24,21 @@ class Tickets extends Component {
             streetNr: '',
             email: '',
             phone: '',
-            date: '',
+            showDate: '',
             ticketsAdults: 0,
             ticketsKids: 0,
             print: 'printAthome',
             payment: 'prepayment',
-            message: ''
+            message: '',
+            labelWidth: 0,
         }
     };
 
+    componentDidMount() {
+        this.setState({
+            labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
+        });
+    }
 
     submit = event => {
         // TODO call node server
@@ -129,23 +136,23 @@ class Tickets extends Component {
                                             ref={ref => {
                                                 this.InputLabelRef = ref;
                                             }}
-                                            htmlFor="date"
+                                            htmlFor="showDate"
                                         >
                                             Vorstellung
                                         </InputLabel>
                                         <Select
                                             native
-                                            value={this.state.date}
-                                            onChange={this.handleChange('date')}
+                                            value={this.state.showDate}
+                                            onChange={this.handleChange('showDate')}
                                             input={
                                                 <OutlinedInput
-                                                    name="date"
+                                                    name="age"
                                                     labelWidth={this.state.labelWidth}
-                                                    id="date"
+                                                    id="showDate"
                                                 />
                                             }
                                         >
-                                            <option value={''}>Bitte Vorstellung wählen</option>
+                                            <option value="" />
                                             <option value={'saturday'}>Samstag, 10.Mai 2019 / 19.30 Uhr</option>
                                             <option value={'sunday'}>Sonntag, 11.Mai 2019 / 14.00 Uhr</option>
                                         </Select>
