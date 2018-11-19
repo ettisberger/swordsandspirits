@@ -4,27 +4,45 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import {Section, SectionTitle, Inlay} from '../theme';
+import * as ContactService from './ContactService';
+import Snackbar from '@material-ui/core/Snackbar';
+import StatusMessage, {openSnackbar} from './StatusMessage.jsx';
+
+const initialState = {
+    firstName: '',
+    name: '',
+    street: '',
+    streetNr: '',
+    email: '',
+    phone: '',
+    message: ''
+};
 
 class Contact extends Component {
 
     constructor (props) {
         super(props);
-        this.state = {
-            firstName: '',
-            name: '',
-            street: '',
-            streetNr: '',
-            email: '',
-            phone: '',
-            message: ''
-        }
-    };
+        this.state = initialState;
+    }
+
+    reset() {
+        this.setState(initialState);
+    }
 
 
     submit = event => {
-        // TODO call node server
-        console.log("submit", event);
-        console.log(this.state);
+        event.preventDefault();
+
+        ContactService.sendMail(this.state).then(res => {
+            console.log("CLIENT: SUCCESS");
+
+            if (res.data.status === 'success'){
+                openSnackbar({ message: 'Kontaktaufnahme versendet.' });
+                this.reset();
+            }else if(res.data.status === 'fail'){
+                openSnackbar({ message: 'Mailversand fehlgeschlagen.' });
+            }
+        });
     };
 
     handleChange = name => event => {
@@ -39,7 +57,7 @@ class Contact extends Component {
                 <Section>
                     <Inlay>
                         <SectionTitle>Kontakt</SectionTitle>
-                        <form noValidate autoComplete="on">
+                        <form onSubmit={(e) => this.submit(e)}  noValidate autoComplete="on" method="POST">
                             <Grid container spacing={24} justify={'center'}>
                                 <Grid container item xs={6} justify={'center'}>
                                     <TextField
@@ -126,13 +144,15 @@ class Contact extends Component {
                                     />
                                 </Grid>
                                 <Grid container item xs={12} justify={'center'}>
-                                    <Button variant="outlined" color="primary" onClick={(e) => this.submit(e)} >
+                                    <Button variant="outlined" color="primary" type="submit">
                                         SENDEN
                                     </Button>
                                 </Grid>
                             </Grid>
+                            <StatusMessage/>
                         </form>
                     </Inlay>
+
                 </Section>
             </React.Fragment>
         );

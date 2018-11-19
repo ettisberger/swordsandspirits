@@ -24,8 +24,12 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../../dist/index.html'));
 });
 
-app.post('/send-email', function (req, res) {
-    console.log(config.GMAIL);
+app.post('/tickets/send', function (req, res) {
+
+});
+
+app.post('/contact/send', function (req, res) {
+    let contactData = req.body.contactData;
 
     let transporter = nodeMailer.createTransport({
         service: 'gmail',
@@ -34,19 +38,21 @@ app.post('/send-email', function (req, res) {
             pass: config.GMAIL.PW
         }
     });
+
     let mailOptions = {
-        from: '"Highland Dancing Basel" <info@swordsandspirits.ch>', // sender address
-        to: req.body.to, // list of receivers
-        subject: req.body.subject, // Subject line
-        text: req.body.body, // plain text body
-        html: '<b>Test Email</b>' // html body
+        from: contactData.firstName + contactData.name + ' <' + contactData.email +'>', // sender address
+        to: 'ettisberger@gmail.com', // list of receivers
+        subject: 'Kontaktaufnahme', // Subject line
+        text: contactData.message, // plain text body
+        html: contactData.message  // html body
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            return console.log(error);
+            console.log(error);
+            res.json({'status': 'fail'});
         }
         console.log('Message %s sent: %s', info.messageId, info.response);
-        res.render('index');
+        res.json({'status': 'success'});
     });
 });

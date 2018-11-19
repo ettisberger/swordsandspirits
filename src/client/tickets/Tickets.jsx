@@ -138,7 +138,7 @@ class Tickets extends Component {
                                             }}
                                             htmlFor="showDate"
                                         >
-                                            Vorstellung
+                                            Datum / Uhrzeit
                                         </InputLabel>
                                         <Select
                                             native
@@ -211,7 +211,7 @@ class Tickets extends Component {
                                             value={this.state.payment}
                                             onChange={this.handleChange('payment')}
                                         >
-                                            <FormControlLabel value="prepayment" control={<Radio color="primary"/>} label="Vorauskasse" />
+                                            <FormControlLabel value="prepayment" control={<Radio color="primary"/>} label="Vorkasse" />
                                             <FormControlLabel value="bill" control={<Radio color="primary"/>} label="Rechnung" />
                                         </RadioGroup>
                                     </FormControl>
