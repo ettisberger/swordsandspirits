@@ -7,7 +7,7 @@ import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import App from './App.jsx';
 import swordsAndSpiritsTheme from './theme';
-import './styles/main.scss'
+import '../styles/main.scss'
 
 const renderApp = () => {
     render(

@@ -34,8 +34,6 @@ class Contact extends Component {
         event.preventDefault();
 
         ContactService.sendMail(this.state).then(res => {
-            console.log("CLIENT: SUCCESS");
-
             if (res.data.status === 'success'){
                 openSnackbar({ message: 'Kontaktaufnahme versendet.' });
                 this.reset();
