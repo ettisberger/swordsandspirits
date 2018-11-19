@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import {Section, SectionTitle, Inlay} from '../theme';
 import * as ContactService from './ContactService';
-import Snackbar from '@material-ui/core/Snackbar';
 import StatusMessage, {openSnackbar} from './StatusMessage.jsx';
 
 const initialState = {
@@ -71,10 +70,10 @@ class Contact extends Component {
                                 </Grid>
                                 <Grid container item xs={6} justify={'center'}>
                                     <TextField
-                                        id="name"
-                                        label="Name"
-                                        value={this.state.name}
-                                        onChange={this.handleChange('name')}
+                                        id="lastName"
+                                        label="Nachname"
+                                        value={this.state.lastName}
+                                        onChange={this.handleChange('lastName')}
                                         margin="normal"
                                         variant="outlined"
                                         required
@@ -150,7 +149,6 @@ class Contact extends Component {
                             <StatusMessage/>
                         </form>
                     </Inlay>
-
                 </Section>
             </React.Fragment>
         );

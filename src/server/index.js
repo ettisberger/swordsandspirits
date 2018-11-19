@@ -40,11 +40,10 @@ app.post('/contact/send', function (req, res) {
     });
 
     let mailOptions = {
-        from: contactData.firstName + contactData.name + ' <' + contactData.email +'>', // sender address
+        from: contactData.firstName + contactData.lastName + ' <' + contactData.email +'>', // sender address
         to: 'ettisberger@gmail.com', // list of receivers
         subject: 'Kontaktaufnahme', // Subject line
-        text: contactData.message, // plain text body
-        html: contactData.message  // html body
+        text: "Absender:" + contactData.firstName + " " + contactData.lastName + "[" + contactData.email + "]\n\nNachricht:\n" + contactData.message, // plain text body
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
