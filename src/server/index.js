@@ -17,7 +17,6 @@ const server = app.listen(process.env.PORT || 3000, () => {
     console.log('server listening on port 3000');
 });
 
-// if we wanna do rest only
 app.use('/', express.static('dist/'));
 
 app.get('*', (req, res) => {
@@ -41,9 +40,9 @@ app.post('/contact/send', function (req, res) {
 
     let mailOptions = {
         from: contactData.firstName + contactData.lastName + ' <' + contactData.email +'>', // sender address, doesnt work with gmail, will be replaced by the logged in email
-        to: config.GMAIL.USER, // list of receivers
-        subject: 'Kontaktaufnahme', // Subject line
-        text: "Absender:" + contactData.firstName + " " + contactData.lastName + "[" + contactData.email + "]\n\nNachricht:\n" + contactData.message, // plain text body
+        to: config.GMAIL.USER,
+        subject: 'Kontaktaufnahme',
+        text: "Absender:" + contactData.firstName + " " + contactData.lastName + "[" + contactData.email + "]\n\nNachricht:\n" + contactData.message,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
