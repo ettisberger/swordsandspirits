@@ -6,4 +6,14 @@ module.exports = merge(commonConfig, {
     plugins: [
         new webpack.DefinePlugin(Object.assign(require('./src/config/local.config.json')))
     ],
+
+    devServer: {
+        historyApiFallback: true,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                secure: false
+            }
+        }
+    }
 });

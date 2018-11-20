@@ -4,8 +4,8 @@ import { Inlay } from '../theme';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid'
 import {Section, SectionTitle} from '../theme';
-import flyer from '../assets/images/flyer.png';
-import partner from '../assets/images/partner_placeholder.png';
+import flyer from '../../assets/images/flyer.png';
+import partner from '../../assets/images/partner_placeholder.png';
 
 const StyledButton = styled(Button)`
     && {

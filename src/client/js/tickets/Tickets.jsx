@@ -12,27 +12,35 @@ import FormLabel from '@material-ui/core/FormLabel';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
+import * as TicketService from '../tickets/TicketService';
+import StatusMessage, {openSnackbar} from '../common/StatusMessage.jsx';
+
+const initialState = {
+    firstName: '',
+    lastName: '',
+    street: '',
+    streetNr: '',
+    email: '',
+    phone: '',
+    showDate: '',
+    ticketsAdults: 0,
+    ticketsKids: 0,
+    print: 'printAthome',
+    payment: 'prepayment',
+    message: '',
+    labelWidth: 0,
+};
 
 class Tickets extends Component {
 
     constructor (props) {
         super(props);
-        this.state = {
-            firstName: '',
-            name: '',
-            street: '',
-            streetNr: '',
-            email: '',
-            phone: '',
-            showDate: '',
-            ticketsAdults: 0,
-            ticketsKids: 0,
-            print: 'printAthome',
-            payment: 'prepayment',
-            message: '',
-            labelWidth: 0,
-        }
-    };
+        this.state = initialState;
+    }
+
+    reset() {
+        this.setState(initialState);
+    }
 
     componentDidMount() {
         this.setState({
@@ -41,9 +49,17 @@ class Tickets extends Component {
     }
 
     submit = event => {
-        // TODO call node server
-        console.log("submit", event);
-        console.log(this.state);
+        event.preventDefault();
+
+        // TODO dont send whole state
+        TicketService.sendMail(this.state).then(res => {
+            if (res.data.status === 'success'){
+                openSnackbar({ message: 'Bestellung versendet.' });
+                this.reset();
+            }else if(res.data.status === 'fail'){
+                openSnackbar({ message: 'Bestellung fehlgeschlagen.' });
+            }
+        });
     };
 
     handleChange = name => event => {
@@ -74,10 +90,10 @@ class Tickets extends Component {
                                 </Grid>
                                 <Grid container item xs={6} justify={'center'}>
                                     <TextField
-                                        id="name"
-                                        label="Name"
-                                        value={this.state.name}
-                                        onChange={this.handleChange('name')}
+                                        id="lastName"
+                                        label="Nachname"
+                                        value={this.state.lastName}
+                                        onChange={this.handleChange('lastName')}
                                         margin="normal"
                                         variant="outlined"
                                         required
@@ -175,10 +191,10 @@ class Tickets extends Component {
                                 </Grid>
                                 <Grid container item xs={6} justify={'center'}>
                                     <TextField
-                                        id="ticketsAdults"
-                                        label="Anzahl Tickets (Erwachsene, je 32.-)"
-                                        value={this.state.ticketsAdults}
-                                        onChange={this.handleChange('ticketsAdults')}
+                                        id="ticketsKids"
+                                        label="Anzahl Tickets (Kinder, je 20.-)"
+                                        value={this.state.ticketsKids}
+                                        onChange={this.handleChange('ticketsKids')}
                                         type="number"
                                         variant="outlined"
                                         fullWidth={true}
@@ -236,6 +252,7 @@ class Tickets extends Component {
                                     </Button>
                                 </Grid>
                             </Grid>
+                            <StatusMessage/>
                         </form>
                     </Inlay>
                 </Section>

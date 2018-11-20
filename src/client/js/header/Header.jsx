@@ -3,7 +3,7 @@ import NavigationBar from '../navigation/NavigationBar.jsx';
 import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components';
 import {accent1Color, brandPrimary} from '../theme';
-import logo from '../assets/images/logo_header.png';
+import logo from '../../assets/images/logo_header.png';
 import theme from '../theme';
 import {Route} from 'react-router-dom';
 import Home from '../home/Home.jsx';

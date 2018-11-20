@@ -8,7 +8,7 @@ module.exports = {
     devtool: 'source-maps',
     entry: './src/client/js/index.js',
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, 'dist/'),
         filename: 'app.bundle.js',
         publicPath: '/'
     },
@@ -39,7 +39,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'src/client/index.html'
+            template: './src/client/index.html'
         })
     ]
 };

@@ -17,30 +17,78 @@ const server = app.listen(process.env.PORT || 3000, () => {
     console.log('server listening on port 3000');
 });
 
+const mailConfig = {
+    host: config.MAIL.SMTP,
+    port: config.MAIL.PORT,
+    secure: true, // use TLS
+    auth: {
+        user: config.MAIL.USER,
+        pass: config.MAIL.PW
+    },
+    tls: {
+        // do not fail on invalid certs
+        rejectUnauthorized: false
+    }
+};
+
 app.use('/', express.static('dist/'));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../../dist/index.html'));
 });
 
-app.post('/tickets/send', function (req, res) {
+app.post('/api/tickets/send', function (req, res) {
+    let ticketData = req.body.ticketData;
 
+    let transporter = nodeMailer.createTransport(mailConfig);
+
+    let orderMail = {
+        from: ticketData.firstName + " " + ticketData.lastName + ' <' + ticketData.email +'>', // sender address, doesnt work with gmail, will be replaced by the logged in email
+        to: config.MAIL.USER,
+        subject: 'Bestellung',
+        text: "Absender:" + ticketData.firstName + " " + ticketData.lastName + "[" + ticketData.email + "]\n" +
+            "\n\nTickets Erwachsene:\n" + ticketData.ticketsAdults +
+            "\n\nTickets Kinder:\n" + ticketData.ticketsKids +
+            "\n\nVersand:\n" + ticketData.print +
+            "\n\nBezahlung:\n" + ticketData.payment +
+            "\n\nVorstellung:\n" + ticketData.showDate +
+            "\n\nNachricht:\n" + ticketData.message
+
+    };
+
+    let customerMail = {
+        from: config.MAIL.USER, // sender address, doesnt work with gmail, will be replaced by the logged in email
+        to: ticketData.email,
+        subject: 'Bestätigung Swords and Spirits 2019',
+        text: "Vielen Dank für die Bestellung. Wir haben diese erhalten und werden sie so schnell als möglich bearbeiten.\n\n" +
+        "Swords and Spirits"
+    };
+
+    transporter.sendMail(orderMail, (error, info) => {
+        if (error) {
+            console.log(error);
+            res.json({'status': 'fail'});
+        }
+
+        transporter.sendMail(customerMail, (error, info) => {
+            if (error) {
+                console.log(error);
+                res.json({'status': 'fail'});
+            }
+
+            res.json({'status': 'success'});
+        });
+    });
 });
 
-app.post('/contact/send', function (req, res) {
+app.post('/api/contact/send', function (req, res) {
     let contactData = req.body.contactData;
 
-    let transporter = nodeMailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: config.GMAIL.USER,
-            pass: config.GMAIL.PW
-        }
-    });
+    let transporter = nodeMailer.createTransport(mailConfig);
 
     let mailOptions = {
-        from: contactData.firstName + contactData.lastName + ' <' + contactData.email +'>', // sender address, doesnt work with gmail, will be replaced by the logged in email
-        to: config.GMAIL.USER,
+        from: contactData.firstName + " " + contactData.lastName + ' <' + contactData.email +'>', // sender address, doesnt work with gmail, will be replaced by the logged in email
+        to: config.MAIL.USER,
         subject: 'Kontaktaufnahme',
         text: "Absender:" + contactData.firstName + " " + contactData.lastName + "[" + contactData.email + "]\n\nNachricht:\n" + contactData.message,
     };
