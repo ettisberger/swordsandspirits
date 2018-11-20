@@ -12,6 +12,8 @@ const initialState = {
     lastName: '',
     street: '',
     streetNr: '',
+    city: '',
+    zip: '',
     email: '',
     phone: '',
     message: ''
@@ -97,6 +99,28 @@ class Contact extends Component {
                                         label="Nr."
                                         value={this.state.streetNr}
                                         onChange={this.handleChange('streetNr')}
+                                        margin="normal"
+                                        variant="outlined"
+                                        fullWidth={true}
+                                    />
+                                </Grid>
+                                <Grid container item xs={6} justify={'center'}>
+                                    <TextField
+                                        id="city"
+                                        label="Ort"
+                                        value={this.state.city}
+                                        onChange={this.handleChange('city')}
+                                        margin="normal"
+                                        variant="outlined"
+                                        fullWidth={true}
+                                    />
+                                </Grid>
+                                <Grid container item xs={6} justify={'center'}>
+                                    <TextField
+                                        id="zip"
+                                        label="Postleitzahl"
+                                        value={this.state.zip}
+                                        onChange={this.handleChange('zip')}
                                         margin="normal"
                                         variant="outlined"
                                         fullWidth={true}

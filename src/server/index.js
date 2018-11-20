@@ -47,13 +47,14 @@ app.post('/api/tickets/send', function (req, res) {
         to: config.MAIL.USER,
         subject: 'Bestellung',
         text: "Absender:" + ticketData.firstName + " " + ticketData.lastName + "[" + ticketData.email + "]\n" +
+            "\n\nAdresse:\n" + ticketData.street + " " + ticketData.streetNr + ", " + ticketData.zip + " " + ticketData.city +
+            "\n\nTelefon/Handy:\n" + ticketData.phone +
             "\n\nTickets Erwachsene:\n" + ticketData.ticketsAdults +
             "\n\nTickets Kinder:\n" + ticketData.ticketsKids +
             "\n\nVersand:\n" + ticketData.print +
             "\n\nBezahlung:\n" + ticketData.payment +
             "\n\nVorstellung:\n" + ticketData.showDate +
             "\n\nNachricht:\n" + ticketData.message
-
     };
 
     let customerMail = {

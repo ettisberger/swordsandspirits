@@ -14,12 +14,21 @@ import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import * as TicketService from '../tickets/TicketService';
 import StatusMessage, {openSnackbar} from '../common/StatusMessage.jsx';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import styled from 'styled-components';
+
+const CostPaper = styled(Paper)`
+  padding: 10px;
+`;
 
 const initialState = {
     firstName: '',
     lastName: '',
     street: '',
     streetNr: '',
+    city: '',
+    zip: '',
     email: '',
     phone: '',
     showDate: '',
@@ -30,6 +39,10 @@ const initialState = {
     message: '',
     labelWidth: 0,
 };
+
+const ticketPriceAdults = 32;
+const ticketPriceKids = 20;
+const shipmentPrice = 5;
 
 class Tickets extends Component {
 
@@ -66,6 +79,10 @@ class Tickets extends Component {
         this.setState({
             [name]: event.target.value
         });
+    };
+
+    calculateTotalCost = () => {
+        return this.state.ticketsAdults * ticketPriceAdults + this.state.ticketsKids * ticketPriceKids + (this.state.print === 'ship' ? shipmentPrice : 0);
     };
 
     render() {
@@ -106,6 +123,7 @@ class Tickets extends Component {
                                         label="Strasse"
                                         value={this.state.street}
                                         onChange={this.handleChange('street')}
+                                        required
                                         margin="normal"
                                         variant="outlined"
                                         fullWidth={true}
@@ -117,6 +135,31 @@ class Tickets extends Component {
                                         label="Nr."
                                         value={this.state.streetNr}
                                         onChange={this.handleChange('streetNr')}
+                                        required
+                                        margin="normal"
+                                        variant="outlined"
+                                        fullWidth={true}
+                                    />
+                                </Grid>
+                                <Grid container item xs={6} justify={'center'}>
+                                    <TextField
+                                        id="city"
+                                        label="Ort"
+                                        value={this.state.city}
+                                        onChange={this.handleChange('city')}
+                                        required
+                                        margin="normal"
+                                        variant="outlined"
+                                        fullWidth={true}
+                                    />
+                                </Grid>
+                                <Grid container item xs={6} justify={'center'}>
+                                    <TextField
+                                        id="zip"
+                                        label="Postleitzahl"
+                                        value={this.state.zip}
+                                        onChange={this.handleChange('zip')}
+                                        required
                                         margin="normal"
                                         variant="outlined"
                                         fullWidth={true}
@@ -177,7 +220,7 @@ class Tickets extends Component {
                                 <Grid container item xs={6} justify={'center'}>
                                     <TextField
                                         id="ticketsAdults"
-                                        label="Anzahl Tickets (Erwachsene, je 32.-)"
+                                        label={"Anzahl Tickets (Erwachsene, je " +  ticketPriceAdults + ".-)"}
                                         value={this.state.ticketsAdults}
                                         onChange={this.handleChange('ticketsAdults')}
                                         type="number"
@@ -192,7 +235,7 @@ class Tickets extends Component {
                                 <Grid container item xs={6} justify={'center'}>
                                     <TextField
                                         id="ticketsKids"
-                                        label="Anzahl Tickets (Kinder, je 20.-)"
+                                        label={"Anzahl Tickets (Kinder, je " +  ticketPriceKids + ".-)"}
                                         value={this.state.ticketsKids}
                                         onChange={this.handleChange('ticketsKids')}
                                         type="number"
@@ -214,7 +257,7 @@ class Tickets extends Component {
                                             onChange={this.handleChange('print')}
                                         >
                                             <FormControlLabel value="printAthome" control={<Radio color="primary"/>} label="Print@Home" />
-                                            <FormControlLabel value="ship" control={<Radio color="primary"/>} label="Versand (+5Fr)" />
+                                            <FormControlLabel value="ship" control={<Radio color="primary"/>} label={"Versand (+" + shipmentPrice + " Fr)"} />
                                         </RadioGroup>
                                     </FormControl>
                                 </Grid>
@@ -232,7 +275,18 @@ class Tickets extends Component {
                                         </RadioGroup>
                                     </FormControl>
                                 </Grid>
-
+                                <Grid container item xs={12} justify={'center'}>
+                                    <TextField
+                                        id="totalCost"
+                                        label="Gesamtbetrag"
+                                        value={this.calculateTotalCost() + " CHF"}
+                                        onChange={this.handleChange('totalCost')}
+                                        margin="normal"
+                                        disabled
+                                        variant="outlined"
+                                        fullWidth={true}
+                                    />
+                                </Grid>
                                 <Grid container item xs={12} justify={'center'}>
                                     <TextField
                                         id="message"
