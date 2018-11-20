@@ -8,6 +8,7 @@
     "dev": "webpack-dev-server --config webpack.local.config --colors --content-base src/client/ & nodemon src/server/index.js",
     "webpack": "webpack --watch --mode development",
     "build": "webpack --config webpack.prod.config.js --progress --optimize-minimize -p",
+    "heroku-postbuild": "npm run build",
     "start": "node src/server/index.js"
   },
   "repository": {
