@@ -4,10 +4,30 @@ const bodyParser = require('body-parser');
 const nodeMailer = require('nodemailer');
 const fs = require('fs');
 
-let config = require('../config/secret.config.json');
+let config;
 
-if(!config){
-    config = require('../config/local.config.json');
+if (fs.existsSync('./src/config/secret.config.json')) {
+    console.log("found secret config");
+    config = require('../config/secret.config.json');
+}
+
+if (process.env.NODE_ENV === 'production') {
+    if(!config){
+        console.log("no secret config, read process.env");
+
+        config = {
+            "MAIL": {
+                "USER": process.ENV.MAIL.USER,
+                "PW": process.ENV.MAIL.PW,
+                "SMTP": process.ENV.SMTP,
+                "PORT": process.ENV.PORT
+            }
+        }
+    }
+} else {
+    if(!config){
+        config = require('../config/local.config.json');
+    }
 }
 
 const app = express();
