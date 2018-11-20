@@ -14,13 +14,6 @@ import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import * as TicketService from '../tickets/TicketService';
 import StatusMessage, {openSnackbar} from '../common/StatusMessage.jsx';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import styled from 'styled-components';
-
-const CostPaper = styled(Paper)`
-  padding: 10px;
-`;
 
 const initialState = {
     firstName: '',
