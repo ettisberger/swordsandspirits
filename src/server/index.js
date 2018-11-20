@@ -17,10 +17,10 @@ if (process.env.NODE_ENV === 'production') {
 
         config = {
             "MAIL": {
-                "USER": process.ENV.MAIL_USER,
-                "PW": process.ENV.MAIL_PW,
-                "SMTP": process.ENV.MAIL_SMTP,
-                "PORT": process.ENV.MAIL_PORT
+                "USER": process.env.MAIL_USER,
+                "PW": process.env.MAIL_PW,
+                "SMTP": process.env.MAIL_SMTP,
+                "PORT": process.env.MAIL_PORT
             }
         }
     }
