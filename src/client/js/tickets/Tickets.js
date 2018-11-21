@@ -86,7 +86,7 @@ class Tickets extends Component {
                         <SectionTitle>Tickets</SectionTitle>
                         <form noValidate autoComplete="on">
                             <Grid container spacing={24} justify={'center'}>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={12} sm={6} justify={'center'}>
                                     <TextField
                                         id="firstName"
                                         label="Vorname"
@@ -98,7 +98,7 @@ class Tickets extends Component {
                                         fullWidth={true}
                                     />
                                 </Grid>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={12} sm={6} justify={'center'}>
                                     <TextField
                                         id="lastName"
                                         label="Nachname"
@@ -110,7 +110,7 @@ class Tickets extends Component {
                                         fullWidth={true}
                                     />
                                 </Grid>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={8} sm={8} justify={'center'}>
                                     <TextField
                                         id="street"
                                         label="Strasse"
@@ -122,7 +122,7 @@ class Tickets extends Component {
                                         fullWidth={true}
                                     />
                                 </Grid>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={4} sm={4} justify={'center'}>
                                     <TextField
                                         id="streetNr"
                                         label="Nr."
@@ -134,7 +134,7 @@ class Tickets extends Component {
                                         fullWidth={true}
                                     />
                                 </Grid>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={12} sm={6} justify={'center'}>
                                     <TextField
                                         id="city"
                                         label="Ort"
@@ -146,7 +146,7 @@ class Tickets extends Component {
                                         fullWidth={true}
                                     />
                                 </Grid>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={12} sm={6} justify={'center'}>
                                     <TextField
                                         id="zip"
                                         label="Postleitzahl"
@@ -210,7 +210,7 @@ class Tickets extends Component {
                                         </Select>
                                     </FormControl>
                                 </Grid>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={12} sm={6} justify={'center'}>
                                     <TextField
                                         id="ticketsAdults"
                                         label={"Anzahl Tickets (Erwachsene, je " +  ticketPriceAdults + ".-)"}
@@ -225,7 +225,7 @@ class Tickets extends Component {
                                         margin="normal"
                                     />
                                 </Grid>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={12} sm={6} justify={'center'}>
                                     <TextField
                                         id="ticketsKids"
                                         label={"Anzahl Tickets (Kinder, je " +  ticketPriceKids + ".-)"}
@@ -240,7 +240,7 @@ class Tickets extends Component {
                                         margin="normal"
                                     />
                                 </Grid>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={12} sm={6} justify={'center'}>
                                     <FormControl component="fieldset" fullWidth={true} >
                                         <FormLabel component="legend">Versand</FormLabel>
                                         <RadioGroup
@@ -254,7 +254,7 @@ class Tickets extends Component {
                                         </RadioGroup>
                                     </FormControl>
                                 </Grid>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={12} justify={'center'}>
                                     <FormControl component="fieldset" fullWidth={true} >
                                         <FormLabel component="legend">Bezahlung</FormLabel>
                                         <RadioGroup

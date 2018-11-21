@@ -9,9 +9,14 @@ import Home from './home/Home';
 import Tickets from './tickets/Tickets';
 import Contact from './contact/Contact';
 import styled from 'styled-components';
+import theme from './theme'
 
 const Main = styled.main`
   margin-top: 110px;
+  
+  ${theme.breakpoints.down('sm')}{
+    margin-top: 56px; 
+  }
 `;
 
 export default class App extends React.Component {

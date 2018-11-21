@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import theme, {accent1Color, brandPrimary} from '../theme';
 import logo from '../../assets/images/logo_header.png';
 import NavigationBar from './navigation/NavigationBar';
+import MobileNavigationBar from './MobileNavigationBar';
 
 const HeaderWrapper = styled.header`
     background-color: ${brandPrimary};
@@ -26,31 +27,12 @@ const Logo = styled.img`
   }
 `;
 
-const HeaderTitle = styled.div`
-  font-size: 6rem;
-  font-family: 'Caolingia';
-  color: ${accent1Color};
-  text-align: left;
-  
-  ${theme.breakpoints.down('lg')}{
-    font-size: 5rem;
-  }
-  
-  ${theme.breakpoints.down('md')}{
-    font-size: 3rem;
-  }  
-  
-  ${theme.breakpoints.down('sm')}{
-    font-size: 1.5rem;
-  }
-`;
-
 export default class Header extends Component {
     render() {
 
         if(theme.breakpoints.down('sm')){
             return (
-                <div/>
+                <MobileNavigationBar/>
             )
         } else {
             return (

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -58,7 +57,7 @@ class Contact extends Component {
                         <SectionTitle>Kontakt</SectionTitle>
                         <form onSubmit={(e) => this.submit(e)}  noValidate autoComplete="on" method="POST">
                             <Grid container spacing={24} justify={'center'}>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={12} sm={6} justify={'center'}>
                                     <TextField
                                         id="firstName"
                                         label="Vorname"
@@ -70,7 +69,7 @@ class Contact extends Component {
                                         fullWidth={true}
                                     />
                                 </Grid>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={12} sm={6} justify={'center'}>
                                     <TextField
                                         id="lastName"
                                         label="Nachname"
@@ -82,7 +81,7 @@ class Contact extends Component {
                                         fullWidth={true}
                                     />
                                 </Grid>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={8} sm={8} justify={'center'}>
                                     <TextField
                                         id="street"
                                         label="Strasse"
@@ -93,7 +92,7 @@ class Contact extends Component {
                                         fullWidth={true}
                                     />
                                 </Grid>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={4} sm={4} justify={'center'}>
                                     <TextField
                                         id="streetNr"
                                         label="Nr."
@@ -104,7 +103,7 @@ class Contact extends Component {
                                         fullWidth={true}
                                     />
                                 </Grid>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={12} sm={6} justify={'center'}>
                                     <TextField
                                         id="city"
                                         label="Ort"
@@ -115,7 +114,7 @@ class Contact extends Component {
                                         fullWidth={true}
                                     />
                                 </Grid>
-                                <Grid container item xs={6} justify={'center'}>
+                                <Grid container item xs={12} sm={6} justify={'center'}>
                                     <TextField
                                         id="zip"
                                         label="Postleitzahl"
