@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import theme, {accent1Color, brandPrimary, Inlay } from '../theme';
 import Grid from '@material-ui/core/Grid'
 
-const FooterWrapper = styled.div`
+const FooterWrapper = styled.div`ß
     height: 15rem;
     padding: 3rem 0;
     border-bottom: 10px solid ${brandPrimary};

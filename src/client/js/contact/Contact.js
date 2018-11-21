@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import {Section, SectionTitle, Inlay} from '../theme';
 import * as ContactService from './ContactService';
-import StatusMessage, {openSnackbar} from '../common/StatusMessage.jsx';
+import StatusMessage, {openSnackbar} from '../common/StatusMessage';
 
 const initialState = {
     firstName: '',

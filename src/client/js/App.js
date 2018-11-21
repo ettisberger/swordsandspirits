@@ -3,11 +3,11 @@
 */
 import React from 'react';
 import {Route} from 'react-router-dom';
-import Header from './header/Header.jsx';
-import Footer from './footer/Footer.jsx';
-import Home from './home/Home.jsx';
-import Tickets from './tickets/Tickets.jsx';
-import Contact from './contact/Contact.jsx';
+import Header from './header/Header';
+import Footer from './footer/Footer';
+import Home from './home/Home';
+import Tickets from './tickets/Tickets';
+import Contact from './contact/Contact';
 import styled from 'styled-components';
 
 const Main = styled.main`

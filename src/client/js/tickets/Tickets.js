@@ -13,7 +13,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import * as TicketService from '../tickets/TicketService';
-import StatusMessage, {openSnackbar} from '../common/StatusMessage.jsx';
+import StatusMessage, {openSnackbar} from '../common/StatusMessage';
 
 const initialState = {
     firstName: '',
