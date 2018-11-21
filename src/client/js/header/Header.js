@@ -5,6 +5,7 @@ import theme, {accent1Color, brandPrimary} from '../theme';
 import logo from '../../assets/images/logo_header.png';
 import NavigationBar from './navigation/NavigationBar';
 import MobileNavigationBar from './MobileNavigationBar';
+import Hidden from '@material-ui/core/Hidden'
 
 const HeaderWrapper = styled.header`
     background-color: ${brandPrimary};
@@ -19,7 +20,7 @@ const HeaderWrapper = styled.header`
 
 const Logo = styled.img`
     max-width: 100%; 
-    height: 70px;
+    max-height: 70px;
     float: left;
     
   ${theme.breakpoints.down('sm')}{
@@ -28,24 +29,31 @@ const Logo = styled.img`
 `;
 
 export default class Header extends Component {
+    constructor (props) {
+        super(props);
+
+        console.log(theme.breakpoints.down('sm'));
+
+        this.setState({isPhone: theme.breakpoints.down('sm')});
+    }
+
     render() {
-
-        if(theme.breakpoints.down('sm')){
-            return (
-                <MobileNavigationBar/>
-            )
-        } else {
-            return (
-                <HeaderWrapper>
-                    <Grid container spacing={12}>
-                        <Grid item xs={4}>
-                            <Logo src={logo}/>
+        return (
+            <React.Fragment>
+                <Hidden smUp>
+                    <MobileNavigationBar/>
+                </Hidden>
+                <Hidden xsDown>
+                    <HeaderWrapper>
+                        <Grid container spacing={12}>
+                            <Grid item xs={4}>
+                                <Logo src={logo}/>
+                            </Grid>
+                            <NavigationBar/>
                         </Grid>
-                        <NavigationBar/>
-                    </Grid>
-                </HeaderWrapper>
-            )
-        }
-
+                    </HeaderWrapper>
+                </Hidden>
+            </React.Fragment>
+        )
     }
 }
