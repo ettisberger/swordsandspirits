@@ -30,14 +30,6 @@ const Logo = styled.img`
 `;
 
 export default class Header extends Component {
-    constructor (props) {
-        super(props);
-
-        console.log(theme.breakpoints.down('sm'));
-
-        this.setState({isPhone: theme.breakpoints.down('sm')});
-    }
-
     render() {
         return (
             <React.Fragment>
