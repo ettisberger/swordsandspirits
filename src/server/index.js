@@ -72,9 +72,8 @@ app.post('/api/tickets/send', function (req, res) {
             "\n\nTickets Erwachsene:\n" + ticketData.ticketsAdults +
             "\n\nTickets Kinder:\n" + ticketData.ticketsKids +
             "\n\nVersand:\n" + ticketData.print +
-            "\n\nBezahlung:\n" + ticketData.payment +
             "\n\nVorstellung:\n" + ticketData.showDate +
-            "\n\nNachricht:\n" + ticketData.message
+            "\n\nBemerkung:\n" + ticketData.message
     };
 
     let customerMail = {

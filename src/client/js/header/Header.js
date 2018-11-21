@@ -6,6 +6,7 @@ import logo from '../../assets/images/logo_header.png';
 import NavigationBar from './navigation/NavigationBar';
 import MobileNavigationBar from './MobileNavigationBar';
 import Hidden from '@material-ui/core/Hidden'
+import {Link} from 'react-router-dom';
 
 const HeaderWrapper = styled.header`
     background-color: ${brandPrimary};
@@ -47,7 +48,7 @@ export default class Header extends Component {
                     <HeaderWrapper>
                         <Grid container spacing={12}>
                             <Grid item xs={4}>
-                                <Logo src={logo}/>
+                                <Link to={''}><Logo src={logo}/></Link>
                             </Grid>
                             <NavigationBar/>
                         </Grid>

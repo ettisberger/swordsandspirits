@@ -28,7 +28,6 @@ const initialState = {
     ticketsAdults: 0,
     ticketsKids: 0,
     print: 'printAthome',
-    payment: 'prepayment',
     message: '',
     labelWidth: 0,
 };
@@ -240,7 +239,7 @@ class Tickets extends Component {
                                         margin="normal"
                                     />
                                 </Grid>
-                                <Grid container item xs={12} sm={6} justify={'center'}>
+                                <Grid container item xs={12} sm={12} justify={'center'}>
                                     <FormControl component="fieldset" fullWidth={true} >
                                         <FormLabel component="legend">Versand</FormLabel>
                                         <RadioGroup
@@ -251,20 +250,6 @@ class Tickets extends Component {
                                         >
                                             <FormControlLabel value="printAthome" control={<Radio color="primary"/>} label="Print@Home" />
                                             <FormControlLabel value="ship" control={<Radio color="primary"/>} label={"Versand (+" + shipmentPrice + " Fr)"} />
-                                        </RadioGroup>
-                                    </FormControl>
-                                </Grid>
-                                <Grid container item xs={12} justify={'center'}>
-                                    <FormControl component="fieldset" fullWidth={true} >
-                                        <FormLabel component="legend">Bezahlung</FormLabel>
-                                        <RadioGroup
-                                            aria-label="payment"
-                                            name="payment"
-                                            value={this.state.payment}
-                                            onChange={this.handleChange('payment')}
-                                        >
-                                            <FormControlLabel value="prepayment" control={<Radio color="primary"/>} label="Vorkasse" />
-                                            <FormControlLabel value="bill" control={<Radio color="primary"/>} label="Rechnung" />
                                         </RadioGroup>
                                     </FormControl>
                                 </Grid>
@@ -280,10 +265,17 @@ class Tickets extends Component {
                                         fullWidth={true}
                                     />
                                 </Grid>
+                                <Grid container item xs={12} justify={'flex-start'}>
+                                    <h5>Bezahlung</h5>
+                                    <p>
+                                        Nach ausgeführter Bestellung werden wir Ihnen die Bankdaten per Email mitteilen. Nach erfolgreicher
+                                        Bezahlung erhalten Sie die Tickets entsprechend der gewählten Versandart.
+                                    </p>
+                                </Grid>
                                 <Grid container item xs={12} justify={'center'}>
                                     <TextField
                                         id="message"
-                                        label="Nachricht"
+                                        label="Bemerkungen"
                                         value={this.state.message}
                                         onChange={this.handleChange('message')}
                                         margin="normal"
