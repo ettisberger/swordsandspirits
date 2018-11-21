@@ -50,15 +50,21 @@ const HeaderTitle = styled.div`
 
 export default class Header extends Component {
     render() {
-        return (
-            <HeaderWrapper>
-                <Grid container spacing={12}>
-                    <Grid item xs={4}>
-                        <Logo src={logo}/>
+
+        if(theme.breakpoints.down('sm')){
+            return (<div></div>);
+        } else {
+            return (
+                <HeaderWrapper>
+                    <Grid container spacing={12}>
+                        <Grid item xs={4}>
+                            <Logo src={logo}/>
+                        </Grid>
+                        <NavigationBar/>
                     </Grid>
-                    <NavigationBar/>
-                </Grid>
-            </HeaderWrapper>
-        )
+                </HeaderWrapper>
+            )
+        }
+
     }
 }

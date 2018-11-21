@@ -15,9 +15,15 @@ export const mdMaxSize = '1023px';
 export const laMinSize = '1024px';
 
 export const Inlay = styled.div`
-  ${createMuiTheme().breakpoints.up('xs')}{
+    margin: 0 auto;
+
+  ${createMuiTheme().breakpoints.up('lg')}{
     width: 1000px;
     margin: 0 auto;
+  }
+  
+  ${createMuiTheme().breakpoints.down('md')}{
+    padding: 0 20px;
   }
 `;
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import {accent1Color, brandPrimary, Inlay} from '../theme';
+import theme, {accent1Color, brandPrimary, Inlay } from '../theme';
 import Grid from '@material-ui/core/Grid'
 
 const FooterWrapper = styled.div`
@@ -10,6 +10,20 @@ const FooterWrapper = styled.div`
     background-color: ${brandPrimary};
     color: ${accent1Color};
     line-height: 1.4rem;
+    
+    ${theme.breakpoints.down('sm')}{
+      && {
+        height: auto;
+      }
+    }
+`;
+
+const FooterItem = styled(Grid)`
+    ${theme.breakpoints.down('sm')}{
+      && {
+        margin: 1rem 0;
+      }
+    }
 `;
 
 const FooterTitle = styled.div`
@@ -24,22 +38,22 @@ class Footer extends Component {
                 <FooterWrapper>
                     <Inlay>
                         <Grid container justify={'center'}>
-                            <Grid item justify={'center'} xs={6}>
+                            <FooterItem item justify={'center'} xs={12} sm={6}>
                                 <FooterTitle>Kompass</FooterTitle>
                                 <p>
                                     Highland Dancing Basel<br/>
                                     www.highlanddance.ch<br/>
                                     2018/2019
                                 </p>
-                            </Grid>
-                            <Grid item justify={'center'} xs={6}>
+                            </FooterItem>
+                            <FooterItem item justify={'center'} xs={12} sm={6} >
                                 <FooterTitle>Kontakt</FooterTitle>
                                 <p>
                                     Kontaktperson XY<br/>
                                     info AT swordsandspirits.ch<br/>
                                     +4179 XXX XX XX
                                 </p>
-                            </Grid>
+                            </FooterItem>
                         </Grid>
                     </Inlay>
                 </FooterWrapper>
