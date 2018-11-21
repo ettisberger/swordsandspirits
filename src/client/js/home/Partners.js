@@ -15,10 +15,11 @@ class Partners extends Component {
         return (
             <Section even>
                 <Inlay>
-                    <SectionTitle>Partner</SectionTitle>
+                    <SectionTitle>Gäste & Partner</SectionTitle>
                     <Grid container spacing={12} justify={'center'}>
                         <Grid container item xs={12} sm={6} md={3} justify={'center'}>
                             <Partner src={anam}/>
+                            <span>Irish Folk Band</span>
                         </Grid>
                     </Grid>
                 </Inlay>
