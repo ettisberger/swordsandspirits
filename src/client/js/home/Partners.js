@@ -10,6 +10,10 @@ const Partner = styled.img`
   height: 150px;
 `;
 
+const PartnerTitle = styled.span`
+  text-align: center;
+`;
+
 class Partners extends Component {
     render () {
         return (
@@ -17,9 +21,9 @@ class Partners extends Component {
                 <Inlay>
                     <SectionTitle>Gäste & Partner</SectionTitle>
                     <Grid container spacing={12} justify={'center'}>
-                        <Grid container item xs={12} sm={6} md={3} justify={'center'}>
+                        <Grid container item xs={12} sm={6} md={3} justify={'center'} direction={'column'}>
                             <Partner src={anam}/>
-                            <span>Irish Folk Band</span>
+                            <PartnerTitle>Irish Folk Band</PartnerTitle>
                         </Grid>
                     </Grid>
                 </Inlay>
