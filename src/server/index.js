@@ -104,13 +104,17 @@ app.post('/api/tickets/send', function (req, res) {
 app.post('/api/contact/send', function (req, res) {
     let contactData = req.body.contactData;
 
+    if(!contactData.email){
+        res.json({'status': 'fail'});
+    }
+
     let transporter = nodeMailer.createTransport(mailConfig);
 
     let mailOptions = {
-        from: contactData.firstName + " " + contactData.lastName + ' <' + contactData.email +'>', // sender address, doesnt work with gmail, will be replaced by the logged in email
+        from: contactData.firstName.value + " " + contactData.lastName.value + ' <' + contactData.email.value +'>', // sender address, doesnt work with gmail, will be replaced by the logged in email
         to: config.MAIL.USER,
         subject: 'Kontaktaufnahme',
-        text: "Absender:" + contactData.firstName + " " + contactData.lastName + "[" + contactData.email + "]\n\nNachricht:\n" + contactData.message,
+        text: "Absender:" + contactData.firstName.value + " " + contactData.lastName.value + "[" + contactData.email.value + "]\n\nNachricht:\n" + contactData.message.value,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {

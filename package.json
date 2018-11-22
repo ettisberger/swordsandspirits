@@ -49,10 +49,12 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "fs": "0.0.1-security",
+    "immutability-helper": "^2.8.1",
     "nodemailer": "^4.6.8",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
-    "styled-components": "^3.3.3"
+    "styled-components": "^3.3.3",
+    "validator": "^10.9.0"
   }
 }

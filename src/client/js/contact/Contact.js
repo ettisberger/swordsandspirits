@@ -5,17 +5,22 @@ import Button from '@material-ui/core/Button';
 import {Section, SectionTitle, Inlay} from '../theme';
 import * as ContactService from './ContactService';
 import StatusMessage, {openSnackbar} from '../common/StatusMessage';
+import update from 'immutability-helper';
+import validate from '../forms/validator'
 
 const initialState = {
-    firstName: '',
-    lastName: '',
-    street: '',
-    streetNr: '',
-    city: '',
-    zip: '',
-    email: '',
-    phone: '',
-    message: ''
+    fields: {
+        firstName: {value: '', error: '', touched: false},
+        lastName: {value: '', error: '', touched: false},
+        street: {value: '', error: '', touched: false},
+        streetNr: {value: '', error: '', touched: false},
+        city: {value: '', error: '', touched: false},
+        zip: {value: '', error: '', touched: false},
+        email: {value: '', error: '', touched: false},
+        phone: {value: '', error: '', touched: false},
+        message: {value: '', error: '', touched: false}
+    },
+    isValid: true
 };
 
 class Contact extends Component {
@@ -33,7 +38,7 @@ class Contact extends Component {
     submit = event => {
         event.preventDefault();
 
-        ContactService.sendMail(this.state).then(res => {
+        ContactService.sendMail(this.state.fields).then(res => {
             if (res.data.status === 'success'){
                 openSnackbar({ message: 'Kontaktaufnahme versendet.' });
                 this.reset();
@@ -44,12 +49,26 @@ class Contact extends Component {
     };
 
     handleChange = name => event => {
-        this.setState({
-            [name]: event.target.value
+        const newState = update(this.state, {
+            fields: {[name]: {$merge: {value: event.target.value}}}
         });
+
+        this.setState(newState);
+    };
+
+    handleBlur = name => event => {
+        const newState = update(this.state, {
+            fields: {[name]: {$merge: {touched: true}}}
+        });
+
+        this.setState(newState);
     };
 
     render() {
+        let {isValid, fields} = validate(this.state.fields);
+
+        console.log(JSON.stringify(fields));
+
         return (
             <React.Fragment>
                 <Section>
@@ -61,31 +80,37 @@ class Contact extends Component {
                                     <TextField
                                         id="firstName"
                                         label="Vorname"
-                                        value={this.state.firstName}
+                                        value={this.state.fields.firstName.value}
                                         onChange={this.handleChange('firstName')}
+                                        onBlur={this.handleBlur('firstName')}
                                         margin="normal"
                                         variant="outlined"
                                         required
                                         fullWidth={true}
+                                        error={fields.firstName.error !== '' && fields.firstName.touched}
+                                        helperText={fields.firstName.error !== "" && fields.firstName.touched ? fields.firstName.error : ""}
                                     />
                                 </Grid>
                                 <Grid container item xs={12} sm={6} justify={'center'}>
                                     <TextField
                                         id="lastName"
                                         label="Nachname"
-                                        value={this.state.lastName}
+                                        value={this.state.fields.lastName.value}
                                         onChange={this.handleChange('lastName')}
+                                        onBlur={this.handleBlur('lastName')}
                                         margin="normal"
                                         variant="outlined"
                                         required
                                         fullWidth={true}
+                                        error={fields.lastName.error !== '' && fields.lastName.touched}
+                                        helperText={fields.lastName.error !== "" && fields.lastName.touched ? fields.lastName.error : ""}
                                     />
                                 </Grid>
                                 <Grid container item xs={8} sm={8} justify={'center'}>
                                     <TextField
                                         id="street"
                                         label="Strasse"
-                                        value={this.state.street}
+                                        value={this.state.fields.street.value}
                                         onChange={this.handleChange('street')}
                                         margin="normal"
                                         variant="outlined"
@@ -96,7 +121,7 @@ class Contact extends Component {
                                     <TextField
                                         id="streetNr"
                                         label="Nr."
-                                        value={this.state.streetNr}
+                                        value={this.state.fields.streetNr.value}
                                         onChange={this.handleChange('streetNr')}
                                         margin="normal"
                                         variant="outlined"
@@ -107,7 +132,7 @@ class Contact extends Component {
                                     <TextField
                                         id="city"
                                         label="Ort"
-                                        value={this.state.city}
+                                        value={this.state.fields.city.value}
                                         onChange={this.handleChange('city')}
                                         margin="normal"
                                         variant="outlined"
@@ -118,7 +143,7 @@ class Contact extends Component {
                                     <TextField
                                         id="zip"
                                         label="Postleitzahl"
-                                        value={this.state.zip}
+                                        value={this.state.fields.zip.value}
                                         onChange={this.handleChange('zip')}
                                         margin="normal"
                                         variant="outlined"
@@ -129,20 +154,23 @@ class Contact extends Component {
                                     <TextField
                                         id="email"
                                         label="Email"
-                                        value={this.state.email}
+                                        value={this.state.fields.email.value}
                                         onChange={this.handleChange('email')}
+                                        onBlur={this.handleBlur('email')}
                                         autoComplete="email"
                                         margin="normal"
                                         variant="outlined"
                                         required
                                         fullWidth={true}
+                                        error={fields.email.error !== '' && fields.email.touched}
+                                        helperText={fields.email.error !== "" && fields.email.touched ? fields.email.error : ""}
                                     />
                                 </Grid>
                                 <Grid container item xs={12} justify={'center'}>
                                     <TextField
                                         id="phone"
                                         label="Telefon/Handy"
-                                        value={this.state.phone}
+                                        value={this.state.fields.phone.value}
                                         onChange={this.handleChange('phone')}
                                         margin="normal"
                                         variant="outlined"
@@ -153,18 +181,21 @@ class Contact extends Component {
                                     <TextField
                                         id="message"
                                         label="Nachricht"
-                                        value={this.state.message}
+                                        value={this.state.fields.message.value}
                                         onChange={this.handleChange('message')}
+                                        onBlur={this.handleBlur('message')}
                                         margin="normal"
                                         variant="outlined"
                                         required
                                         multiline
                                         rows="10"
                                         fullWidth={true}
+                                        error={fields.message.error !== '' && fields.message.touched}
+                                        helperText={fields.message.error !== "" && fields.message.touched ? fields.message.error : ""}
                                     />
                                 </Grid>
                                 <Grid container item xs={12} justify={'center'}>
-                                    <Button variant="outlined" color="primary" type="submit">
+                                    <Button variant="outlined" color="primary" type="submit" disabled={!isValid}>
                                         SENDEN
                                     </Button>
                                 </Grid>

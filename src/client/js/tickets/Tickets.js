@@ -29,7 +29,7 @@ const initialState = {
     ticketsKids: 0,
     print: 'printAthome',
     message: '',
-    labelWidth: 0,
+    labelWidth: 0
 };
 
 const ticketPriceAdults = 32;
@@ -70,11 +70,29 @@ class Tickets extends Component {
     handleChange = name => event => {
         this.setState({
             [name]: event.target.value
-        });
+        }, this.validate(name, event.target.value));
     };
 
-    calculateTotalCost = () => {
+    calculateTotalCost() {
         return this.state.ticketsAdults * ticketPriceAdults + this.state.ticketsKids * ticketPriceKids + (this.state.print === 'ship' ? shipmentPrice : 0);
+    };
+
+    validate(fieldName, value) {
+        console.log("validate " + fieldName +" with value " + value);
+
+
+
+        console.log("test");
+
+       /*let isValid = true;
+
+        if(!this.state.firstName || !this.state.lastName) {
+            console.log("test");
+            //isValid = false;
+            this.setState({validationErroText: "Dieses Feld muss gefüllt werden."})
+        }*/
+
+        //this.setState({validation: isValid});
     };
 
     render() {
@@ -95,6 +113,8 @@ class Tickets extends Component {
                                         variant="outlined"
                                         required
                                         fullWidth={true}
+                                        //error={!this.state.validation}
+                                        //helperText={this.state.validationErrorText}
                                     />
                                 </Grid>
                                 <Grid container item xs={12} sm={6} justify={'center'}>
@@ -286,7 +306,7 @@ class Tickets extends Component {
                                     />
                                 </Grid>
                                 <Grid container item xs={12} justify={'center'}>
-                                    <Button variant="outlined" color="primary" onClick={(event) => this.submit(event)}>
+                                    <Button variant="outlined" color="primary" onClick={(event) => this.submit(event)} disabled={!this.state.validation}>
                                         BESTELLEN
                                     </Button>
                                 </Grid>
