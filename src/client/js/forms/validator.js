@@ -14,7 +14,7 @@ export default (fields) => {
                 case 'zip':
                 case 'message':
                 case 'phone':
-                case 'showData':
+                case 'showDate':
                     if (fields[field].required && validator.isEmpty(fields[field].value)) {
                         fields[field].error = "Dieses Feld kann nicht leer sein.";
                         isValid = false;

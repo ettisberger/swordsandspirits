@@ -69,25 +69,28 @@ app.get('*', (req, res) => {
 app.post('/api/tickets/send', function (req, res) {
     let ticketData = req.body.ticketData;
 
+    if(!ticketData.email){
+        res.json({'status': 'fail'});
+    }
     let transporter = nodeMailer.createTransport(mailConfig);
 
     let orderMail = {
-        from: ticketData.firstName + " " + ticketData.lastName + ' <' + ticketData.email +'>', // sender address, doesnt work with gmail, will be replaced by the logged in email
+        from: ticketData.firstName.value + " " + ticketData.lastName.value + ' <' + ticketData.email.value +'>', // sender address, doesnt work with gmail, will be replaced by the logged in email
         to: config.MAIL.USER,
         subject: 'Bestellung',
-        text: "Absender:" + ticketData.firstName + " " + ticketData.lastName + "[" + ticketData.email + "]\n" +
-            "\n\nAdresse:\n" + ticketData.street + " " + ticketData.streetNr + ", " + ticketData.zip + " " + ticketData.city +
-            "\n\nTelefon/Handy:\n" + ticketData.phone +
-            "\n\nTickets Erwachsene:\n" + ticketData.ticketsAdults +
-            "\n\nTickets Kinder:\n" + ticketData.ticketsKids +
-            "\n\nVersand:\n" + ticketData.print +
-            "\n\nVorstellung:\n" + ticketData.showDate +
-            "\n\nBemerkung:\n" + ticketData.message
+        text: "Absender:" + ticketData.firstName.value + " " + ticketData.lastName.value + "[" + ticketData.email.value + "]\n" +
+            "\n\nAdresse:\n" + ticketData.street.value + " " + ticketData.streetNr.value + ", " + ticketData.zip.value + " " + ticketData.city.value +
+            "\n\nTelefon/Handy:\n" + ticketData.phone.value +
+            "\n\nTickets Erwachsene:\n" + ticketData.ticketsAdults.value +
+            "\n\nTickets Kinder:\n" + ticketData.ticketsKids.value +
+            "\n\nVersand:\n" + ticketData.print.value +
+            "\n\nVorstellung:\n" + ticketData.showDate.value +
+            "\n\nBemerkung:\n" + ticketData.message.value
     };
 
     let customerMail = {
         from: config.MAIL.USER, // sender address, doesnt work with gmail, will be replaced by the logged in email
-        to: ticketData.email,
+        to: ticketData.email.value,
         subject: 'Bestätigung Swords and Spirits 2019',
         text: "Vielen Dank für die Bestellung. Wir haben diese erhalten und werden sie so schnell als möglich bearbeiten.\n\n" +
         "Swords and Spirits"

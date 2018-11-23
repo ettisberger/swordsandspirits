@@ -19,19 +19,19 @@ import validate from '../forms/validator';
 
 const initialState = {
     fields: {
-        firstName: {value: '', error: '', touched: false},
-        lastName: {value: '', error: '', touched: false},
-        street: {value: '', error: '', touched: false},
-        streetNr: {value: '', error: '', touched: false},
-        city: {value: '', error: '', touched: false},
-        zip: {value: '', error: '', touched: false},
-        email: {value: '', error: '', touched: false},
-        phone: {value: '', error: '', touched: false},
-        message: {value: '', error: '', touched: false},
-        showData: {value: '', error: '', touched: false},
-        ticketsAdults: {value: 0, error: '', touched: false},
-        ticketsKids: {value: 0, error: '', touched: false},
-        print: {value: 'printAthome', error: '', touched: false},
+        firstName: {value: '', error: '', required: true, touched: false},
+        lastName: {value: '', error: '', required: true,touched: false},
+        street: {value: '', error: '', required: true,touched: false},
+        streetNr: {value: '', error: '', required: false,touched: false},
+        city: {value: '', error: '', required: true,touched: false},
+        zip: {value: '', error: '', required: true,touched: false},
+        email: {value: '', error: '', required: true,touched: false},
+        phone: {value: '', error: '', required: false,touched: false},
+        message: {value: '', error: '', required: false,touched: false},
+        showDate: {value: '', error: '', required: true,touched: false},
+        ticketsAdults: {value: 0, error: '', required: false,touched: false},
+        ticketsKids: {value: 0, error: '', required: false,touched: false},
+        print: {value: 'printAthome', error: '', required: false,touched: false},
 
     },
     isValid: true,
@@ -62,7 +62,7 @@ class Tickets extends Component {
     submit = event => {
         event.preventDefault();
 
-        TicketService.sendMail(this.state).then(res => {
+        TicketService.sendMail(this.state.fields).then(res => {
             if (res.data.status === 'success'){
                 openSnackbar({ message: 'Bestellung versendet.' });
                 this.reset();
@@ -89,7 +89,7 @@ class Tickets extends Component {
     };
 
     calculateTotalCost() {
-        return this.state.ticketsAdults * ticketPriceAdults + this.state.ticketsKids * ticketPriceKids + (this.state.print === 'ship' ? shipmentPrice : 0);
+        return this.state.fields.ticketsAdults.value * ticketPriceAdults + this.state.fields.ticketsKids.value * ticketPriceKids + (this.state.fields.print.value === 'ship' ? shipmentPrice : 0);
     };
 
     render() {
@@ -106,7 +106,7 @@ class Tickets extends Component {
                                     <TextField
                                         id="firstName"
                                         label="Vorname"
-                                        value={this.state.firstName}
+                                        value={this.state.fields.firstName.value}
                                         onChange={this.handleChange('firstName')}
                                         onBlur={this.handleBlur('firstName')}
                                         margin="normal"
@@ -121,7 +121,7 @@ class Tickets extends Component {
                                     <TextField
                                         id="lastName"
                                         label="Nachname"
-                                        value={this.state.lastName}
+                                        value={this.state.fields.lastName.value}
                                         onChange={this.handleChange('lastName')}
                                         onBlur={this.handleBlur('lastName')}
                                         margin="normal"
@@ -136,7 +136,7 @@ class Tickets extends Component {
                                     <TextField
                                         id="street"
                                         label="Strasse"
-                                        value={this.state.street}
+                                        value={this.state.fields.street.value}
                                         onChange={this.handleChange('street')}
                                         onBlur={this.handleBlur('street')}
                                         required
@@ -151,9 +151,8 @@ class Tickets extends Component {
                                     <TextField
                                         id="streetNr"
                                         label="Nr."
-                                        value={this.state.streetNr}
+                                        value={this.state.fields.streetNr.value}
                                         onChange={this.handleChange('streetNr')}
-                                        required
                                         margin="normal"
                                         variant="outlined"
                                         fullWidth={true}
@@ -163,7 +162,7 @@ class Tickets extends Component {
                                     <TextField
                                         id="city"
                                         label="Ort"
-                                        value={this.state.city}
+                                        value={this.state.fields.city.value}
                                         onChange={this.handleChange('city')}
                                         onBlur={this.handleBlur('city')}
                                         required
@@ -178,7 +177,7 @@ class Tickets extends Component {
                                     <TextField
                                         id="zip"
                                         label="Postleitzahl"
-                                        value={this.state.zip}
+                                        value={this.state.fields.zip.value}
                                         onChange={this.handleChange('zip')}
                                         onBlur={this.handleBlur('zip')}
                                         required
@@ -193,7 +192,7 @@ class Tickets extends Component {
                                     <TextField
                                         id="email"
                                         label="Email"
-                                        value={this.state.email}
+                                        value={this.state.fields.email.value}
                                         onChange={this.handleChange('email')}
                                         onBlur={this.handleBlur('email')}
                                         autoComplete="email"
@@ -209,7 +208,7 @@ class Tickets extends Component {
                                     <TextField
                                         id="phone"
                                         label="Telefon/Handy"
-                                        value={this.state.phone}
+                                        value={this.state.fields.phone.value}
                                         onChange={this.handleChange('phone')}
                                         margin="normal"
                                         variant="outlined"
@@ -228,7 +227,7 @@ class Tickets extends Component {
                                         </InputLabel>
                                         <Select
                                             native
-                                            value={this.state.showDate}
+                                            value={this.state.fields.showDate.value}
                                             onChange={this.handleChange('showDate')}
                                             onBlur={this.handleBlur('showDate')}
                                             input={
@@ -251,7 +250,7 @@ class Tickets extends Component {
                                     <TextField
                                         id="ticketsAdults"
                                         label={"Anzahl Tickets (Erwachsene, je " +  ticketPriceAdults + ".-)"}
-                                        value={this.state.ticketsAdults}
+                                        value={this.state.fields.ticketsAdults.value}
                                         onChange={this.handleChange('ticketsAdults')}
                                         type="number"
                                         variant="outlined"
@@ -266,7 +265,7 @@ class Tickets extends Component {
                                     <TextField
                                         id="ticketsKids"
                                         label={"Anzahl Tickets (Kinder, je " +  ticketPriceKids + ".-)"}
-                                        value={this.state.ticketsKids}
+                                        value={this.state.fields.ticketsKids.value}
                                         onChange={this.handleChange('ticketsKids')}
                                         type="number"
                                         variant="outlined"
@@ -283,7 +282,7 @@ class Tickets extends Component {
                                         <RadioGroup
                                             aria-label="print"
                                             name="print"
-                                            value={this.state.print}
+                                            value={this.state.fields.print.value}
                                             onChange={this.handleChange('print')}
                                         >
                                             <FormControlLabel value="printAthome" control={<Radio color="primary"/>} label="Print@Home" />
@@ -314,7 +313,7 @@ class Tickets extends Component {
                                     <TextField
                                         id="message"
                                         label="Bemerkungen"
-                                        value={this.state.message}
+                                        value={this.state.fields.message.value}
                                         onChange={this.handleChange('message')}
                                         margin="normal"
                                         variant="outlined"
