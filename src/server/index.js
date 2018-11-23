@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'production') {
                 "SMTP": process.env.MAIL_SMTP,
                 "PORT": process.env.MAIL_PORT
             },
-            "USE_SSL": provess.env.USE_SSL
+            "USE_SSL": process.env.USE_SSL
         }
     }
 } else {
