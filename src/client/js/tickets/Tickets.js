@@ -207,7 +207,7 @@ class Tickets extends Component {
                                 <Grid container item xs={12} justify={'center'}>
                                     <TextField
                                         id="phone"
-                                        label="Telefon/Handy"
+                                        label="Telefon / Handy"
                                         value={this.state.fields.phone.value}
                                         onChange={this.handleChange('phone')}
                                         margin="normal"
