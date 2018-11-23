@@ -4,5 +4,6 @@
         "PW": "test",
         "SMTP": "rubin.metanet.ch",
         "PORT": "465"
-    }
+    },
+    "USE_SSL": false
 }

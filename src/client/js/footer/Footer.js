@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import theme, {accent1Color, brandPrimary, Inlay } from '../theme';
 import Grid from '@material-ui/core/Grid'
+import Mailto from 'react-protected-mailto'
 
-const FooterWrapper = styled.div`ß
+const FooterWrapper = styled.div`
     height: 15rem;
     padding: 3rem 0;
     border-bottom: 10px solid ${brandPrimary};
@@ -30,6 +31,10 @@ const FooterTitle = styled.div`
   font-weight: bold;
 `;
 
+const MailToEncrypted = styled(Mailto)`
+  color: white;
+`;
+
 class Footer extends Component {
 
     render() {
@@ -49,9 +54,11 @@ class Footer extends Component {
                             <FooterItem item justify={'center'} xs={12} sm={6} >
                                 <FooterTitle>Kontakt</FooterTitle>
                                 <p>
-                                    Kontaktperson XY<br/>
-                                    info AT swordsandspirits.ch<br/>
-                                    +4179 XXX XX XX
+                                   <MailToEncrypted
+                                    email='info@swordsandspirits.ch'
+                                    headers={
+                                        {subject:'Kontaktaufnahme'}
+                                    }/>
                                 </p>
                             </FooterItem>
                         </Grid>

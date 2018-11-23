@@ -37,6 +37,14 @@ const server = app.listen(process.env.PORT || 3000, () => {
     console.log('server listening on port 3000');
 });
 
+app.use('*', (req, res, next) => {
+    if (config.USE_SSL && req.headers['x-forwarded-proto'] !== 'https') {
+        res.redirect(`https://${req.hostname}${req.url}`);
+    } else {
+        next();
+    }
+});
+
 const mailConfig = {
     host: config.MAIL.SMTP,
     port: config.MAIL.PORT,
