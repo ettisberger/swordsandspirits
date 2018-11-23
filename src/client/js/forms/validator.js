@@ -8,8 +8,14 @@ export default (fields) => {
             switch (field) {
                 case 'firstName':
                 case 'lastName':
+                case 'street':
+                case 'streetNr':
+                case 'city':
+                case 'zip':
                 case 'message':
-                    if (validator.isEmpty(fields[field].value)) {
+                case 'phone':
+                case 'showData':
+                    if (fields[field].required && validator.isEmpty(fields[field].value)) {
                         fields[field].error = "Dieses Feld kann nicht leer sein.";
                         isValid = false;
                     } else {
@@ -17,7 +23,7 @@ export default (fields) => {
                     }
                     break;
                 case 'email':
-                    if (!validator.isEmail(fields[field].value)) {
+                    if (fields[field].required &&!validator.isEmail(fields[field].value)) {
                         fields[field].error = "Bitte eine gültige Email Adresse verwenden.";
                         isValid = false;
                     } else {

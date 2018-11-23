@@ -10,15 +10,15 @@ import validate from '../forms/validator'
 
 const initialState = {
     fields: {
-        firstName: {value: '', error: '', touched: false},
-        lastName: {value: '', error: '', touched: false},
-        street: {value: '', error: '', touched: false},
-        streetNr: {value: '', error: '', touched: false},
-        city: {value: '', error: '', touched: false},
-        zip: {value: '', error: '', touched: false},
-        email: {value: '', error: '', touched: false},
-        phone: {value: '', error: '', touched: false},
-        message: {value: '', error: '', touched: false}
+        firstName: {value: '', error: '', required: true, touched: false},
+        lastName: {value: '', error: '', required: true, touched: false},
+        street: {value: '', error: '', required: false, touched: false},
+        streetNr: {value: '', error: '', required: false,touched: false},
+        city: {value: '', error: '', required: false,touched: false},
+        zip: {value: '', error: '', required: false,touched: false},
+        email: {value: '', error: '', required: true,touched: false},
+        phone: {value: '', error: '', required: false,touched: false},
+        message: {value: '', error: '', required: true,touched: false}
     },
     isValid: true
 };
@@ -66,8 +66,6 @@ class Contact extends Component {
 
     render() {
         let {isValid, fields} = validate(this.state.fields);
-
-        console.log(JSON.stringify(fields));
 
         return (
             <React.Fragment>

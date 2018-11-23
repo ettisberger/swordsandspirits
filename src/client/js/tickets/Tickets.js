@@ -14,21 +14,27 @@ import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import * as TicketService from '../tickets/TicketService';
 import StatusMessage, {openSnackbar} from '../common/StatusMessage';
+import update from 'immutability-helper';
+import validate from '../forms/validator';
 
 const initialState = {
-    firstName: '',
-    lastName: '',
-    street: '',
-    streetNr: '',
-    city: '',
-    zip: '',
-    email: '',
-    phone: '',
-    showDate: '',
-    ticketsAdults: 0,
-    ticketsKids: 0,
-    print: 'printAthome',
-    message: '',
+    fields: {
+        firstName: {value: '', error: '', touched: false},
+        lastName: {value: '', error: '', touched: false},
+        street: {value: '', error: '', touched: false},
+        streetNr: {value: '', error: '', touched: false},
+        city: {value: '', error: '', touched: false},
+        zip: {value: '', error: '', touched: false},
+        email: {value: '', error: '', touched: false},
+        phone: {value: '', error: '', touched: false},
+        message: {value: '', error: '', touched: false},
+        showData: {value: '', error: '', touched: false},
+        ticketsAdults: {value: 0, error: '', touched: false},
+        ticketsKids: {value: 0, error: '', touched: false},
+        print: {value: 'printAthome', error: '', touched: false},
+
+    },
+    isValid: true,
     labelWidth: 0
 };
 
@@ -56,7 +62,6 @@ class Tickets extends Component {
     submit = event => {
         event.preventDefault();
 
-        // TODO dont send whole state
         TicketService.sendMail(this.state).then(res => {
             if (res.data.status === 'success'){
                 openSnackbar({ message: 'Bestellung versendet.' });
@@ -68,34 +73,28 @@ class Tickets extends Component {
     };
 
     handleChange = name => event => {
-        this.setState({
-            [name]: event.target.value
-        }, this.validate(name, event.target.value));
+        const newState = update(this.state, {
+            fields: {[name]: {$merge: {value: event.target.value}}}
+        });
+
+        this.setState(newState);
+    };
+
+    handleBlur = name => event => {
+        const newState = update(this.state, {
+            fields: {[name]: {$merge: {touched: true}}}
+        });
+
+        this.setState(newState);
     };
 
     calculateTotalCost() {
         return this.state.ticketsAdults * ticketPriceAdults + this.state.ticketsKids * ticketPriceKids + (this.state.print === 'ship' ? shipmentPrice : 0);
     };
 
-    validate(fieldName, value) {
-        console.log("validate " + fieldName +" with value " + value);
-
-
-
-        console.log("test");
-
-       /*let isValid = true;
-
-        if(!this.state.firstName || !this.state.lastName) {
-            console.log("test");
-            //isValid = false;
-            this.setState({validationErroText: "Dieses Feld muss gefüllt werden."})
-        }*/
-
-        //this.setState({validation: isValid});
-    };
-
     render() {
+        let {isValid, fields} = validate(this.state.fields);
+
         return (
             <React.Fragment>
                 <Section>
@@ -109,12 +108,13 @@ class Tickets extends Component {
                                         label="Vorname"
                                         value={this.state.firstName}
                                         onChange={this.handleChange('firstName')}
+                                        onBlur={this.handleBlur('firstName')}
                                         margin="normal"
                                         variant="outlined"
                                         required
                                         fullWidth={true}
-                                        //error={!this.state.validation}
-                                        //helperText={this.state.validationErrorText}
+                                        error={fields.firstName.error !== '' && fields.firstName.touched}
+                                        helperText={fields.firstName.error !== "" && fields.firstName.touched ? fields.firstName.error : ""}
                                     />
                                 </Grid>
                                 <Grid container item xs={12} sm={6} justify={'center'}>
@@ -123,10 +123,13 @@ class Tickets extends Component {
                                         label="Nachname"
                                         value={this.state.lastName}
                                         onChange={this.handleChange('lastName')}
+                                        onBlur={this.handleBlur('lastName')}
                                         margin="normal"
                                         variant="outlined"
                                         required
                                         fullWidth={true}
+                                        error={fields.lastName.error !== '' && fields.lastName.touched}
+                                        helperText={fields.lastName.error !== "" && fields.lastName.touched ? fields.lastName.error : ""}
                                     />
                                 </Grid>
                                 <Grid container item xs={8} sm={8} justify={'center'}>
@@ -135,10 +138,13 @@ class Tickets extends Component {
                                         label="Strasse"
                                         value={this.state.street}
                                         onChange={this.handleChange('street')}
+                                        onBlur={this.handleBlur('street')}
                                         required
                                         margin="normal"
                                         variant="outlined"
                                         fullWidth={true}
+                                        error={fields.street.error !== '' && fields.street.touched}
+                                        helperText={fields.street.error !== "" && fields.street.touched ? fields.street.error : ""}
                                     />
                                 </Grid>
                                 <Grid container item xs={4} sm={4} justify={'center'}>
@@ -159,10 +165,13 @@ class Tickets extends Component {
                                         label="Ort"
                                         value={this.state.city}
                                         onChange={this.handleChange('city')}
+                                        onBlur={this.handleBlur('city')}
                                         required
                                         margin="normal"
                                         variant="outlined"
                                         fullWidth={true}
+                                        error={fields.city.error !== '' && fields.city.touched}
+                                        helperText={fields.city.error !== "" && fields.city.touched ? fields.city.error : ""}
                                     />
                                 </Grid>
                                 <Grid container item xs={12} sm={6} justify={'center'}>
@@ -171,10 +180,13 @@ class Tickets extends Component {
                                         label="Postleitzahl"
                                         value={this.state.zip}
                                         onChange={this.handleChange('zip')}
+                                        onBlur={this.handleBlur('zip')}
                                         required
                                         margin="normal"
                                         variant="outlined"
                                         fullWidth={true}
+                                        error={fields.zip.error !== '' && fields.zip.touched}
+                                        helperText={fields.zip.error !== "" && fields.zip.touched ? fields.zip.error : ""}
                                     />
                                 </Grid>
                                 <Grid container item xs={12} justify={'center'}>
@@ -183,11 +195,14 @@ class Tickets extends Component {
                                         label="Email"
                                         value={this.state.email}
                                         onChange={this.handleChange('email')}
+                                        onBlur={this.handleBlur('email')}
                                         autoComplete="email"
                                         margin="normal"
                                         variant="outlined"
                                         required
                                         fullWidth={true}
+                                        error={fields.email.error !== '' && fields.email.touched}
+                                        helperText={fields.email.error !== "" && fields.email.touched ? fields.email.error : ""}
                                     />
                                 </Grid>
                                 <Grid container item xs={12} justify={'center'}>
@@ -215,6 +230,7 @@ class Tickets extends Component {
                                             native
                                             value={this.state.showDate}
                                             onChange={this.handleChange('showDate')}
+                                            onBlur={this.handleBlur('showDate')}
                                             input={
                                                 <OutlinedInput
                                                     name="age"
@@ -222,6 +238,8 @@ class Tickets extends Component {
                                                     id="showDate"
                                                 />
                                             }
+                                            error={fields.showDate.error !== '' && fields.showDate.touched}
+                                            helperText={fields.showDate.error !== "" && fields.showDate.touched ? fields.showDate.error : ""}
                                         >
                                             <option value="" />
                                             <option value={'saturday'}>Samstag, 11.Mai 2019 / 19.30 Uhr</option>
@@ -306,7 +324,7 @@ class Tickets extends Component {
                                     />
                                 </Grid>
                                 <Grid container item xs={12} justify={'center'}>
-                                    <Button variant="outlined" color="primary" onClick={(event) => this.submit(event)} disabled={!this.state.validation}>
+                                    <Button variant="outlined" color="primary" onClick={(event) => this.submit(event)} disabled={!isValid}>
                                         BESTELLEN
                                     </Button>
                                 </Grid>
