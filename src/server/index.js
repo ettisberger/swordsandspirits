@@ -21,7 +21,8 @@ if (process.env.NODE_ENV === 'production') {
                 "PW": process.env.MAIL_PW,
                 "SMTP": process.env.MAIL_SMTP,
                 "PORT": process.env.MAIL_PORT
-            }
+            },
+            "USE_SSL": provess.env.USE_SSL
         }
     }
 } else {
