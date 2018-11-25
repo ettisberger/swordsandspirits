@@ -3,6 +3,7 @@
 */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/client/js/index.js',
@@ -44,6 +45,12 @@ module.exports = {
                 collapseWhitespace: true,
                 preserveLineBreaks: false,
             },
-        })
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: 'src/client/assets/',
+                to: 'assets/',
+            },
+        ]),
     ]
 };

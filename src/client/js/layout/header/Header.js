@@ -7,7 +7,7 @@ import NavigationBar from './navigation/NavigationBar';
 import MobileNavigationBar from './navigation/MobileNavigationBar';
 import Hidden from '@material-ui/core/Hidden'
 import {Link} from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+//`${config.APP.BASE_URL}/assets/images/emailHeader.png`
 
 const HeaderWrapper = styled.header`
     background-color: ${brandPrimary};
