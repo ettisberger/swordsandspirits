@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import { Inlay } from '../theme';
 import {Section, SectionTitle} from '../theme';
-import flyer from '../../assets/images/flyer_compressed.jpg';
 import Partners from './Partners';
 import { Helmet } from 'react-helmet';
 
@@ -25,7 +24,7 @@ export default class Home extends Component {
                 </Helmet>
                 <Section odd>
                     <Inlay>
-                        <Flyer src={flyer}/>
+                        <Flyer src={'/assets/images/flyer_compressed.jpg'}/>
                     </Inlay>
                 </Section>
                 <Partners/>

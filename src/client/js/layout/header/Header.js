@@ -2,12 +2,10 @@ import React, {Component} from 'react';
 import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components';
 import theme, {accent1Color, brandPrimary} from '../../theme';
-import logo from '../../../assets/images/logo_header.png';
 import NavigationBar from './navigation/NavigationBar';
 import MobileNavigationBar from './navigation/MobileNavigationBar';
 import Hidden from '@material-ui/core/Hidden'
 import {Link} from 'react-router-dom';
-//`${config.APP.BASE_URL}/assets/images/emailHeader.png`
 
 const HeaderWrapper = styled.header`
     background-color: ${brandPrimary};
@@ -41,7 +39,7 @@ export default class Header extends Component {
                     <HeaderWrapper>
                         <Grid container spacing={16}>
                             <Grid item xs={4}>
-                                <Link to={''}><Logo src={logo}/></Link>
+                                <Link to={''}><Logo src={'/assets/images/logo_header.png'}/></Link>
                             </Grid>
                             <NavigationBar/>
                         </Grid>

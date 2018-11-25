@@ -1,6 +1,5 @@
 import {Inlay, Section, SectionTitle} from '../theme';
 import Grid from '@material-ui/core/Grid/Grid';
-import anam from '../../assets/images/anam_logo.svg';
 import React, {Component} from 'react';
 import styled from 'styled-components';
 
@@ -22,7 +21,7 @@ class Partners extends Component {
                     <SectionTitle>Gäste & Partner</SectionTitle>
                     <Grid container spacing={16} justify={'center'}>
                         <Grid container item xs={12} sm={6} md={3} justify={'center'} direction={'column'}>
-                            <Partner src={anam}/>
+                            <Partner src={'/assets/images/anam_logo.svg'}/>
                             <PartnerTitle>Irish Folk Band</PartnerTitle>
                         </Grid>
                     </Grid>
