@@ -3,8 +3,8 @@
 */
 import React from 'react';
 import {Route} from 'react-router-dom';
-import Header from './header/Header';
-import Footer from './footer/Footer';
+import Header from './layout/header/Header';
+import Footer from './layout/footer/Footer';
 import Home from './home/Home';
 import Tickets from './tickets/Tickets';
 import Contact from './contact/Contact';

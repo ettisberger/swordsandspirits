@@ -9,6 +9,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import FormHelperText from '@material-ui/core/FormHelperText'
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -16,6 +17,7 @@ import * as TicketService from '../tickets/TicketService';
 import StatusMessage, {openSnackbar} from '../common/StatusMessage';
 import update from 'immutability-helper';
 import validate from '../forms/validator';
+import {Helmet} from 'react-helmet';
 
 const initialState = {
     fields: {
@@ -97,6 +99,11 @@ class Tickets extends Component {
 
         return (
             <React.Fragment>
+                <Helmet>
+                    <title>
+                        Ticket-Bestellung
+                    </title>
+                </Helmet>
                 <Section>
                     <Inlay>
                         <SectionTitle>Tickets</SectionTitle>
@@ -216,7 +223,12 @@ class Tickets extends Component {
                                     />
                                 </Grid>
                                 <Grid container item xs={12} justify={'center'}>
-                                    <FormControl variant="outlined" fullWidth={true} required>
+                                    <FormControl
+                                        variant="outlined"
+                                        fullWidth={true}
+                                        required
+                                        error={fields.showDate.error !== '' && fields.showDate.touched}
+                                    >
                                         <InputLabel
                                             ref={ref => {
                                                 this.InputLabelRef = ref;
@@ -237,13 +249,12 @@ class Tickets extends Component {
                                                     id="showDate"
                                                 />
                                             }
-                                            error={fields.showDate.error !== '' && fields.showDate.touched}
-                                            helperText={fields.showDate.error !== "" && fields.showDate.touched ? fields.showDate.error : ""}
                                         >
                                             <option value="" />
                                             <option value={'saturday'}>Samstag, 11.Mai 2019 / 19.30 Uhr</option>
                                             <option value={'sunday'}>Sonntag, 12.Mai 2019 / 14.00 Uhr</option>
                                         </Select>
+                                        <FormHelperText>{fields.showDate.error !== "" && fields.showDate.touched ? fields.showDate.error : ""}</FormHelperText>
                                     </FormControl>
                                 </Grid>
                                 <Grid container item xs={12} sm={6} justify={'center'}>

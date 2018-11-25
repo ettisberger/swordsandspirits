@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Grid from '@material-ui/core/Grid/Grid';
 import styled from 'styled-components';
-import {accent1Color, linkColor} from '../../theme';
+import {accent1Color, linkColor} from '../../../theme';
 
 const NavItem = styled.div`
   color: ${linkColor};

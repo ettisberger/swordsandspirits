@@ -7,6 +7,7 @@ import * as ContactService from './ContactService';
 import StatusMessage, {openSnackbar} from '../common/StatusMessage';
 import update from 'immutability-helper';
 import validate from '../forms/validator'
+import {Helmet} from 'react-helmet';
 
 const initialState = {
     fields: {
@@ -69,6 +70,11 @@ class Contact extends Component {
 
         return (
             <React.Fragment>
+                <Helmet>
+                    <title>
+                        Kontakt
+                    </title>
+                </Helmet>
                 <Section>
                     <Inlay>
                         <SectionTitle>Kontakt</SectionTitle>

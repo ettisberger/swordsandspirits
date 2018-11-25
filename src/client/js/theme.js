@@ -48,6 +48,9 @@ export const SectionTitle = styled.h2 `
 `;
 
 export default createMuiTheme({
+    typography: {
+        useNextVariants: true,
+    },
     palette: {
         primary: {
             main: brandPrimary,

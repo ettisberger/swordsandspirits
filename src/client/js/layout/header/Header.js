@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components';
-import theme, {accent1Color, brandPrimary} from '../theme';
-import logo from '../../assets/images/logo_header.png';
+import theme, {accent1Color, brandPrimary} from '../../theme';
+import logo from '../../../assets/images/logo_header.png';
 import NavigationBar from './navigation/NavigationBar';
-import MobileNavigationBar from './MobileNavigationBar';
+import MobileNavigationBar from './navigation/MobileNavigationBar';
 import Hidden from '@material-ui/core/Hidden'
 import {Link} from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const HeaderWrapper = styled.header`
     background-color: ${brandPrimary};
@@ -38,7 +39,7 @@ export default class Header extends Component {
                 </Hidden>
                 <Hidden xsDown>
                     <HeaderWrapper>
-                        <Grid container spacing={12}>
+                        <Grid container spacing={16}>
                             <Grid item xs={4}>
                                 <Link to={''}><Logo src={logo}/></Link>
                             </Grid>

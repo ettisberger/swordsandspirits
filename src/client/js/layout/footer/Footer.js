@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import theme, {accent1Color, brandPrimary, Inlay } from '../theme';
+import theme, {accent1Color, brandPrimary, Inlay } from '../../theme';
 import Grid from '@material-ui/core/Grid'
 import Mailto from 'react-protected-mailto'
 
@@ -43,7 +43,7 @@ class Footer extends Component {
                 <FooterWrapper>
                     <Inlay>
                         <Grid container justify={'center'}>
-                            <FooterItem item justify={'center'} xs={12} sm={6}>
+                            <FooterItem container item xs={12} sm={8} direction={'column'}>
                                 <FooterTitle>Kompass</FooterTitle>
                                 <p>
                                     Highland Dancing Basel<br/>
@@ -51,7 +51,7 @@ class Footer extends Component {
                                     2018/2019
                                 </p>
                             </FooterItem>
-                            <FooterItem item justify={'center'} xs={12} sm={6} >
+                            <FooterItem container item xs={12} sm={4} direction={'column'}>
                                 <FooterTitle>Kontakt</FooterTitle>
                                 <p>
                                    <MailToEncrypted

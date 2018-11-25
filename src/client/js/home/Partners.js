@@ -20,7 +20,7 @@ class Partners extends Component {
             <Section even>
                 <Inlay>
                     <SectionTitle>Gäste & Partner</SectionTitle>
-                    <Grid container spacing={12} justify={'center'}>
+                    <Grid container spacing={16} justify={'center'}>
                         <Grid container item xs={12} sm={6} md={3} justify={'center'} direction={'column'}>
                             <Partner src={anam}/>
                             <PartnerTitle>Irish Folk Band</PartnerTitle>

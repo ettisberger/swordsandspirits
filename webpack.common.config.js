@@ -5,7 +5,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    devtool: 'source-maps',
     entry: './src/client/js/index.js',
     output: {
         path: path.join(__dirname, 'dist/'),
@@ -39,7 +38,12 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/client/index.html'
+            template: './src/client/index.html',
+            minify: {
+                minifyCSS: true,
+                collapseWhitespace: true,
+                preserveLineBreaks: false,
+            },
         })
     ]
 };
