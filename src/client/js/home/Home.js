@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import { Inlay } from '../theme';
+import {brandPrimary, Inlay} from '../theme';
 import {Section, SectionTitle} from '../theme';
 import Partners from './Partners';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom'
 
 const Flyer = styled.img`
   display: block;
@@ -14,6 +15,10 @@ const Flyer = styled.img`
 
 const Text = styled.p`
   line-height: 1.4;
+  
+  a {
+    color: ${brandPrimary};
+  }
 `;
 
 export default class Home extends Component {
@@ -33,6 +38,9 @@ export default class Home extends Component {
                             ihre gemeinsamen Abenteuer und ihre tiefe Schwesterliebe erleben.
                             Die Show wird sowohl traditionelle s als auch neu-choreografierte Tänze präsentieren und wir freuen uns, mit mehreren Gästen aufzutreten:
                             die Anam Irish Folk Band, die Pipes and Drums of Basel und die Maguire O’Shea Irish Dancers.
+                            <br/>
+                            <br/>
+                            40 Highland Dancers, 15 Musiker, 6 Irish Dancers, 1 grossartige Show! Tickets gibt es <Link to={'tickets'}>hier</Link>.
                         </Text>
                     </Inlay>
                 </Section>
