@@ -31,12 +31,12 @@ export default class Home extends Component {
                 </Helmet>
                 <Section even>
                     <Inlay>
-                        <SectionTitle>Swords and Spirits – eine schottische Legende</SectionTitle>
+                        <SectionTitle>Swords and Spirits – Eine schottische Legende</SectionTitle>
                         <Text>
                             Die Tanz-Show Swords and Spirits – eine schottische Legende erzählt die Geschichte von zwei schottischen Schwestern, Moira und Stella.
                             Das Publikum wird mitgenommen auf eine Reise durch die schottischen Highlands wo die beiden Schwestern durch Tanz ihr Wiedersehen,
                             ihre gemeinsamen Abenteuer und ihre tiefe Schwesterliebe erleben.
-                            Die Show wird sowohl traditionelle s als auch neu-choreografierte Tänze präsentieren und wir freuen uns, mit mehreren Gästen aufzutreten:
+                            Die Show wird sowohl traditionelle als auch neu-choreografierte Tänze präsentieren und wir freuen uns, mit mehreren Gästen aufzutreten:
                             die Anam Irish Folk Band, die Pipes and Drums of Basel und die Maguire O’Shea Irish Dancers.
                             <br/>
                             <br/>
