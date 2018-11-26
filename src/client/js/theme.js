@@ -37,7 +37,7 @@ export const Section = styled.section`
     `}
   
     ${props => props.even && css`
-        background-color: ${backgroundColor};
+        background-color: ${whiteColor};
         color: ${blackColor};
     `}
 `;
