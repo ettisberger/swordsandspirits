@@ -21,7 +21,7 @@ const PartnerLogo = styled(Grid)`
 class Partners extends Component {
     render () {
         return (
-            <Section even>
+            <Section {...this.props}>
                 <Inlay>
                     <SectionTitle>Gäste & Partner</SectionTitle>
                     <Grid container spacing={16} justify={'center'}>

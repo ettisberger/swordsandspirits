@@ -41,7 +41,32 @@ export default class Home extends Component {
                         <Flyer src={'/assets/images/flyer_compressed.jpg'}/>
                     </Inlay>
                 </Section>
-                <Partners/>
+                <Section even>
+                    <Inlay>
+                        <SectionTitle>Highland Dancing</SectionTitle>
+                        <Text>
+                            Highland Dancing stammt aus Schottland und ist eine herausfordernde Tanzart, welche viel Kraft, Koordination und Disziplin benötigt.
+                            Kraftvollen Sprünge und schnelle, präzise Beinarbeit zeichnet diese Tanzart aus, welche usprünglich Fitness Training für schottischen Soldate und damit ausschliesslich
+                            den Männern vorbehalten war.
+                            <br/>
+                            <br/>
+                            Die genauen Wurzeln und Herkunft der einzelnen Tänze sind nicht bekannt, aber es gibt verschiedene Geschichten und Erzählungen worin wiederholt solche Tänze beschrieben werden.  Der Sword Dance zum Beispiel wurde jeweils vor dem Krieg durchgeführt - die Männer kreuzten ihre scharfen Schwerter auf dem Boden vor sich und mussten während des Tanzes darüber springen.
+                            Es zählte als schlechtes Omen, wenn die Tänzer das Schwert berührten und man spricht davon, dass sie im Kampf verletzt oder gar getötet wurden.
+                        </Text>
+                    </Inlay>
+                </Section>
+                <Section odd>
+                    <Inlay>
+                        <SectionTitle>School of Highland Dancing Basel</SectionTitle>
+                        <Text>
+                            Die School of Highland Dancing Basel wurde 2009 von Carol Jones gegründet. Sie besteht aus begeisterten Kindern und Erwachsenen, die regelmässig ins Training kommen,
+                            um die vielen Vorteile dieser Tanzart zu geniessen, zum Beispiel gute Kondition, räumliches Bewusstsein, verbesserte  Koordination und natürlich auch das soziale
+                            Zusamenleben und den "Fun" Faktor . Mittlerweile nehmen diese TänzerInnen an vielen Shows in der Schweiz und im Ausland teil und zeigen ihr Können regelmässig
+                            äusserst erfolgreich an internationalen Wettbewerben. Zudem absolvieren sie alle zwei Jahren Prüfungen beim Scottish Official Board of Highland Dancing.
+                        </Text>
+                    </Inlay>
+                </Section>
+                <Partners even/>
             </React.Fragment>
         )
     }
