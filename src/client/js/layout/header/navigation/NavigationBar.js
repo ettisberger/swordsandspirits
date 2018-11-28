@@ -7,7 +7,7 @@ import {accent1Color, linkColor} from '../../../theme';
 const NavItem = styled.div`
   color: ${linkColor};
   font-size: 18px;
-  text-align: right;
+  text-align: center;
   
   && {
     a {
