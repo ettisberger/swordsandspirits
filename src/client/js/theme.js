@@ -9,11 +9,6 @@ export const linkColor = '#fff';
 export const blackColor = '#333';
 export const whiteColor = '#FFFFFE';
 
-export const xsMaxSize = '768px';
-export const mdMinSize = '769px';
-export const mdMaxSize = '1023px';
-export const laMinSize = '1024px';
-
 export const Inlay = styled.div`
     margin: 0 auto;
 
