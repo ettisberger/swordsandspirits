@@ -18,6 +18,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import TicketsIcon from '@material-ui/icons/ShoppingCart';
+import PartnerIcon from '@material-ui/icons/Group';
 import ContactIcon from '@material-ui/icons/ContactMail';
 import {Link} from 'react-router-dom';
 
@@ -141,7 +142,7 @@ class MobileNavigationBar extends React.Component {
                             <Link to={''}><ListItemText primary="Home" /></Link>
                         </ListItem>
                         <ListItem button key="Partner">
-                            <ListItemIcon><HomeIcon/></ListItemIcon>
+                            <ListItemIcon><PartnerIcon/></ListItemIcon>
                             <Link to={'partner'}><ListItemText primary="Partner" /></Link>
                         </ListItem>
                         <ListItem button key="Tickets">
