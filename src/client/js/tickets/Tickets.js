@@ -260,7 +260,7 @@ class Tickets extends Component {
                                 <Grid container item xs={12} sm={6} justify={'center'}>
                                     <TextField
                                         id="ticketsAdults"
-                                        label={"Anzahl Tickets (Erwachsene, je " +  ticketPriceAdults + ".-)"}
+                                        label={"Anzahl Tickets (Erwachsene, je " +  ticketPriceAdults + ".-, freie Platzwahl)"}
                                         value={this.state.fields.ticketsAdults.value}
                                         onChange={this.handleChange('ticketsAdults')}
                                         type="number"
@@ -275,7 +275,7 @@ class Tickets extends Component {
                                 <Grid container item xs={12} sm={6} justify={'center'}>
                                     <TextField
                                         id="ticketsKids"
-                                        label={"Anzahl Tickets (Kinder, je " +  ticketPriceKids + ".-)"}
+                                        label={"Anzahl Tickets (Kinder, je " +  ticketPriceKids + ".-, freie Platzwahl)"}
                                         value={this.state.fields.ticketsKids.value}
                                         onChange={this.handleChange('ticketsKids')}
                                         type="number"

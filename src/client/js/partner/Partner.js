@@ -24,15 +24,12 @@ export default class Partner extends Component {
                         <SectionTitle>Maguire O’Shea Irish Dancers</SectionTitle>
                         <Text>
                             Maguire O’Shea Switzerland wurde im Jahr 2016 als eine zusätzliche Gruppe von der weltbekannten Maguire O’Shea Academy in London gegründet.
-                            Angefangen durch Michael und Deirdre Maguire die Tanzschule hat über 50 Schülerinnen und Schüler, die in Basel und Zürich die Stunden besuchen.
+                            Iniitiert durch Michael & Deirdre Maguire hat die Tanzschule über 50 Schülerinnen und Schüler, die in Basel und Zürich die Lokalitäten besuchen.
                             <br/>
                             <br/>
-                            Tänzerinnen und Tänzer aus der Schule haben verschiedene Titel in Europa auf dem Meisterschaft Niveau gewonnen und vier habe sogar für die Weltmeisterschaft
-                            qualifiziert.
-                            <br/>
-                            <br/>
-                            Man kann unter dem Jahr die Gruppe an verschiedenen Anlässen in der Schweiz sehen, von der Tanzparade Basel und Zürich Tanz, bis hin zum World Economic Forum in Davos.
-                            Firmenanlässe sowie Hochzeiten und natürlich St Patrick’s Day Feiern werden regelmässig von dieser Tanzgruppe gehoben.
+                            Die Gruppe nimmt an verschiedenen Anlässen in der Schweiz teil, wie zum Beispiel an der Tanzparade Basel und Zürich oder auch am
+                            World Economic Forum in Davos. Unsere Tänzerinnen und Tänzer treten auch an Firmenanlässe oder Hochzeiten auf, und Highlights jedes Jahres
+                            sind die Festivitäten zum St Patrick’s Day.
                         </Text>
                     </Inlay>
                 </Section>
