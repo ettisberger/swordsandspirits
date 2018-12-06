@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {brandPrimary, Inlay} from '../theme';
 import {Section, SectionTitle} from '../theme';
 import Partners from './Partners';
+import Sponsors from './Sponsors';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom'
 
@@ -75,6 +76,7 @@ export default class Home extends Component {
                     </Inlay>
                 </Section>
                 <Partners even/>
+                <Sponsors odd/>
             </React.Fragment>
         )
     }

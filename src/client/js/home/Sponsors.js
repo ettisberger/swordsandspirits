@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Inlay, Section, SectionTitle} from '../theme';
 import Grid from '@material-ui/core/Grid/Grid';
-import partner from '../../assets/images/partner_placeholder.png';
+import sponsor from '../../assets/images/swisslos_logo.jpg';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
 
 const Sponsor = styled.img`
   display: block;
@@ -22,16 +23,7 @@ class Sponsors extends Component {
                     <SectionTitle>Sponsoren</SectionTitle>
                     <Grid container spacing={12} justify={'center'}>
                         <Grid container item xs={3} justify={'center'}>
-                            <Sponsor src={partner}/>
-                        </Grid>
-                        <Grid container item xs={3} justify={'center'}>
-                            <Sponsor src={partner}/>
-                        </Grid>
-                        <Grid container item xs={3} justify={'center'}>
-                            <Sponsor src={partner}/>
-                        </Grid>
-                        <Grid container item xs={3} justify={'center'}>
-                            <Sponsor src={partner}/>
+                            <a href={'https://www.swisslos.ch'}><Sponsor src={sponsor}/></a>
                         </Grid>
                     </Grid>
                 </Inlay>
