@@ -22,7 +22,7 @@ class Sponsors extends Component {
                 <Inlay>
                     <SectionTitle>Sponsoren</SectionTitle>
                     <Grid container spacing={12} justify={'center'}>
-                        <Grid container item xs={3} justify={'center'}>
+                        <Grid container item xs={12} sm={6} justify={'center'}>
                             <a href={'https://www.swisslos.ch'}><Sponsor src={sponsor}/></a>
                         </Grid>
                     </Grid>
