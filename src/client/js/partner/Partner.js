@@ -19,6 +19,26 @@ export default class Partner extends Component {
                 <Helmet>
                     <title>Swords and Spirits - Partner</title>
                 </Helmet>
+                <Section odd>
+                    <Inlay>
+                        <SectionTitle>ANAM - Irish Folk Band</SectionTitle>
+                        <Text>
+                            Die Band wurde 2012 in Basel gegründet. Das Wort ANAM kommt aus der gälischen Sprache und bedeutet „die Seele“.
+                            <br/>
+                            <br/>
+                            Wir begeistern unser Publikum mit traditionellen und modernen irischen, schottischen und amerikanischen Melodien
+                            verbunden mit einem eigenen basler Scharm. Die irische Lebensfreude ist dabei eines der wichtigsten Elemente
+                            in unseren Show’s. Bisher haben wir mit eigenen Konzerten und Auftritten an Hochzeiten und Geburtstagen unser
+                            Publikum mit unserer Leidenschaft und Freude an der Musik überzeugen können.
+                            <br/>
+                            <br/>
+                            Nun freuen wir uns auf die Highland Dance Show.
+                            <br/>
+                            <br/>
+                            Barbara Berli - Akkordeon & Piano / Christian Meyer - Flute / Lukas Aebi - Percussion / Nicole Meyer - classic Flute & Whistle / Rolf Häner - Bass & Vocal
+                        </Text>
+                    </Inlay>
+                </Section>
                 <Section even>
                     <Inlay>
                         <SectionTitle>Maguire O’Shea Irish Dancers</SectionTitle>
