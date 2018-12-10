@@ -123,12 +123,13 @@ class MobileNavigationBar extends React.Component {
                 </AppBar>
                 <Drawer
                     className={classes.drawer}
-                    variant="persistent"
+                    variant="temporary"
                     anchor="left"
                     open={open}
                     classes={{
                         paper: classes.drawerPaper,
                     }}
+                    onClick={this.handleDrawerClose}
                 >
                     <div className={classes.drawerHeader}>
                         <IconButton onClick={this.handleDrawerClose}>
