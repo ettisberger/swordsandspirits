@@ -275,7 +275,7 @@ class Tickets extends Component {
                                 <Grid container item xs={12} sm={6} justify={'center'}>
                                     <TextField
                                         id="ticketsKids"
-                                        label={"Anzahl Tickets (Kinder, je " +  ticketPriceKids + ".-, freie Platzwahl)"}
+                                        label={"Anzahl Tickets (Kinder bis 16, je " +  ticketPriceKids + ".-, freie Platzwahl)"}
                                         value={this.state.fields.ticketsKids.value}
                                         onChange={this.handleChange('ticketsKids')}
                                         type="number"
