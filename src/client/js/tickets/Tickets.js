@@ -37,6 +37,7 @@ const initialState = {
 
     },
     isValid: true,
+    isSubmitDisabled: false,
     labelWidth: 0
 };
 
@@ -63,6 +64,7 @@ class Tickets extends Component {
 
     submit = event => {
         event.preventDefault();
+        this.setState( {isSubmitDisabled: true});
 
         TicketService.sendMail(this.state.fields).then(res => {
             if (res.data.status === 'success'){
@@ -70,6 +72,7 @@ class Tickets extends Component {
                 this.reset();
             }else if(res.data.status === 'fail'){
                 openSnackbar({ message: 'Bestellung fehlgeschlagen.' });
+                this.setState( {isSubmitDisabled: false});
             }
         });
     };
@@ -334,7 +337,7 @@ class Tickets extends Component {
                                     />
                                 </Grid>
                                 <Grid container item xs={12} justify={'center'}>
-                                    <Button variant="outlined" color="primary" onClick={(event) => this.submit(event)} disabled={!isValid}>
+                                    <Button variant="outlined" color="primary" onClick={(event) => this.submit(event)} disabled={!isValid || this.state.isSubmitDisabled }>
                                         BESTELLEN
                                     </Button>
                                 </Grid>
