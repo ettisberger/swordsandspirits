@@ -6,6 +6,11 @@ import Partners from './Partners';
 import Sponsors from './Sponsors';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom'
+import Grid from '@material-ui/core/Grid';
+import homePhoto1 from '../../assets/images/dancing/home_1.jpg';
+import homePhoto2 from '../../assets/images/dancing/home_2.jpg';
+import homePhoto3 from '../../assets/images/dancing/home_3.jpg';
+import homePhoto4 from '../../assets/images/dancing/home_4.jpg';
 
 const Flyer = styled.img`
   display: block;
@@ -21,6 +26,11 @@ const Text = styled.p`
     color: ${brandPrimary};
   }
 `;
+
+const ImageContainer = styled.div`
+  padding: 0 40px;
+`;
+
 
 export default class Home extends Component {
     render() {
@@ -74,6 +84,25 @@ export default class Home extends Component {
                             äusserst erfolgreich an internationalen Wettbewerben. Zudem absolvieren sie alle zwei Jahren Prüfungen beim Scottish Official Board of Highland Dancing.
                         </Text>
                     </Inlay>
+                </Section>
+                <Section even>
+                    <SectionTitle>Eindrücke</SectionTitle>
+                    <ImageContainer>
+                        <Grid container spacing={32} justify={'center'}>
+                            <Grid item xs={12} sm={6}>
+                                <img src={homePhoto1}/>
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <img src={homePhoto2}/>
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <img src={homePhoto3}/>
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <img src={homePhoto4}/>
+                            </Grid>
+                        </Grid>
+                    </ImageContainer>
                 </Section>
                 <Partners even/>
                 <Sponsors odd/>
