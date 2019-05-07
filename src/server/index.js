@@ -96,7 +96,7 @@ app.post('/api/tickets/send', function (req, res) {
         from: config.MAIL.USER, // sender address, doesnt work with gmail, will be replaced by the logged in email
         to: ticketData.email.value,
         subject: 'Bestätigung Swords and Spirits 2019',
-        text: "Vielen Dank für Ihre Bestellung, wir haben die Tickets für den gewünschten Tag auf ihren Namen reserviert. Diese können gegen Barzahlung an der Abendkasse abgeholt werden.\n\n" +
+        text: "Vielen Dank für Ihre Bestellung, wir haben die Tickets für den gewünschten Tag auf ihren Namen reserviert. Bitte holen Sie diese gegen Barzahlung an der Abendkasse ab (Abendkasse Samstag ab 18.30, Sonntag ab 13 Uhr geöffnet).\n\n" +
         "Swords and Spirits"
     };
 
