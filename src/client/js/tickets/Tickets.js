@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import {Inlay, Section, SectionTitle} from '../theme';
+import { brandPrimary, Inlay, Section, SectionTitle, whiteColor } from '../theme';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -18,6 +18,7 @@ import StatusMessage, {openSnackbar} from '../common/StatusMessage';
 import update from 'immutability-helper';
 import validate from '../forms/validator';
 import {Helmet} from 'react-helmet';
+import styled from 'styled-components';
 
 const initialState = {
     fields: {
@@ -33,7 +34,7 @@ const initialState = {
         showDate: {value: '', error: '', required: true,touched: false},
         ticketsAdults: {value: 0, error: '', required: false,touched: false},
         ticketsKids: {value: 0, error: '', required: false,touched: false},
-        print: {value: 'printAthome', error: '', required: false,touched: false},
+        print: {value: 'reservation', error: '', required: false,touched: false},
 
     },
     isValid: true,
@@ -44,6 +45,12 @@ const initialState = {
 const ticketPriceAdults = 32;
 const ticketPriceKids = 20;
 const shipmentPrice = 5;
+
+const Banner = styled.div`
+  padding: 30px 10px;
+  background-color: ${brandPrimary};
+  color: ${whiteColor};
+`
 
 class Tickets extends Component {
 
@@ -110,6 +117,7 @@ class Tickets extends Component {
                 <Section>
                     <Inlay>
                         <SectionTitle>Tickets</SectionTitle>
+                        <Banner>Der offizielle Ticketverkauf ist ab sofort geschlossen. Es können jedoch weiterhin Tickets mit dem bestehenden Formular vorreserviert und gegen Barzahlung an der Abendkasse abgeholt werden. Vielen Dank für Ihr Verständnis.</Banner>
                         <form noValidate autoComplete="on">
                             <Grid container spacing={24} justify={'center'}>
                                 <Grid container item xs={12} sm={6} justify={'center'}>
@@ -299,8 +307,9 @@ class Tickets extends Component {
                                             value={this.state.fields.print.value}
                                             onChange={this.handleChange('print')}
                                         >
-                                            <FormControlLabel value="printAthome" control={<Radio color="primary"/>} label="Print@Home" />
-                                            <FormControlLabel value="ship" control={<Radio color="primary"/>} label={"Versand (+" + shipmentPrice + " Fr)"} />
+                                            <FormControlLabel value="reservation" control={<Radio color="primary"/>} label="Reservation (Barzahlung an der Abendkasse)"/>
+                                            <FormControlLabel value="printAthome" control={<Radio color="primary"/>} label="Print@Home" disabled/>
+                                            <FormControlLabel value="ship" control={<Radio color="primary"/>} label={"Versand (+" + shipmentPrice + " Fr)"} disabled/>
                                         </RadioGroup>
                                     </FormControl>
                                 </Grid>
@@ -319,8 +328,8 @@ class Tickets extends Component {
                                 <Grid container item xs={12} justify={'flex-start'}>
                                     <h5>Bezahlung</h5>
                                     <p>
-                                        Nach ausgeführter Bestellung werden wir Ihnen die Bankdaten per Email mitteilen. Nach erfolgreicher
-                                        Bezahlung erhalten Sie die Tickets entsprechend der gewählten Versandart.
+                                        Aufgrund der kurzfristigen Bestellung werden keine Tickets mehr versendet. Ihre Tickets können Sie gerne an der Abendkasse gegen Barzahlung abholen.
+                                        Vielen Dank.
                                     </p>
                                 </Grid>
                                 <Grid container item xs={12} justify={'center'}>

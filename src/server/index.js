@@ -96,7 +96,7 @@ app.post('/api/tickets/send', function (req, res) {
         from: config.MAIL.USER, // sender address, doesnt work with gmail, will be replaced by the logged in email
         to: ticketData.email.value,
         subject: 'Bestätigung Swords and Spirits 2019',
-        text: "Vielen Dank für die Bestellung. Wir haben diese erhalten und werden sie so schnell als möglich bearbeiten.\n\n" +
+        text: "Vielen Dank für Ihre Bestellung. Aufgrund der kurzfristigen Bestellung werden wir keine Tickets mehr versenden können. Die Tickets können Sie jedoch gerne gegen Barzahlung an der Abendkasse abholen.\n\n" +
         "Swords and Spirits"
     };
 
