@@ -50,6 +50,7 @@ const Banner = styled.div`
   padding: 30px 10px;
   background-color: ${brandPrimary};
   color: ${whiteColor};
+  line-height: 1.3;
 `
 
 class Tickets extends Component {
