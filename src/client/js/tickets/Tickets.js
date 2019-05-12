@@ -118,7 +118,7 @@ class Tickets extends Component {
                 <Section>
                     <Inlay>
                         <SectionTitle>Tickets</SectionTitle>
-                        <Banner>Der offizielle Ticketverkauf ist ab sofort geschlossen. Es können jedoch weiterhin Tickets mit dem bestehenden Formular vorreserviert und gegen Barzahlung an der Abendkasse abgeholt werden. Die Abendkasse ist am Samstag ab 18.30 geöffnet,
+                        <Banner>Der offizielle Ticketverkauf ist ab sofort geschlossen. Die Abendkasse ist am Samstag ab 18.30 geöffnet,
                             am Sonntag ab 13 Uhr. Vielen Dank für Ihr Verständnis.</Banner>
                         <form noValidate autoComplete="on">
                             <Grid container spacing={24} justify={'center'}>
