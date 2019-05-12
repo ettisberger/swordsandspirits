@@ -264,7 +264,7 @@ class Tickets extends Component {
                                             }
                                         >
                                             <option value="" />
-                                            <option value={'sunday'}>Sonntag, 12.Mai 2019 / 14.00 Uhr</option>
+                                            
                                         </Select>
                                         <FormHelperText>{fields.showDate.error !== "" && fields.showDate.touched ? fields.showDate.error : ""}</FormHelperText>
                                     </FormControl>
