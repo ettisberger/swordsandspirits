@@ -146,10 +146,6 @@ class MobileNavigationBar extends React.Component {
                             <ListItemIcon><PartnerIcon/></ListItemIcon>
                             <Link to={'partner'}><ListItemText primary="Gäste & Partner" /></Link>
                         </ListItem>
-                        <ListItem button key="Tickets">
-                            <ListItemIcon><TicketsIcon/></ListItemIcon>
-                            <Link to={'tickets'}><ListItemText primary="Tickets" /></Link>
-                        </ListItem>
                         <ListItem button key="Kontakt">
                             <ListItemIcon><ContactIcon/></ListItemIcon>
                             <Link to={'contact'}><ListItemText primary="Kontakt" /></Link>
